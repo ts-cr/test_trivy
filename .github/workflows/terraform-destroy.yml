@@ -1,0 +1,39 @@
+name: Destroy Terraform Resources
+
+on:
+  workflow_dispatch:  # Permite ejecutar manualmente el workflow
+
+jobs:
+  terraform-destroy:
+    name: Destroy Terraform Infrastructure
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠️ Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔑 Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: 🚀 Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: quickstart-1553479874808
+
+      - name: 🏗️ Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: latest
+
+      - name: 📂 Initialize Terraform
+        run: cd terraform && terraform init
+
+      - name: 🔄 Plan Destroy
+        run: cd terraform && terraform plan -destroy -out=tfplan-destroy
+
+      - name: ⚠️ Apply Destroy (Destruir Infraestructura)
+        run: cd terraform && terraform apply -auto-approve tfplan-destroy

@@ -1,0 +1,40 @@
+name: Security Scan with Trivy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write  # Permiso para subir reportes SARIF al Security Dashboard
+
+jobs:
+  security_scan:
+    name: 🔍 Security Scan with Trivy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠️ Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: 🔨 Build Docker Image (Python 3)
+        run: |
+          docker build -t python-app:latest .
+
+      - name: 🛡 Run Trivy Scan (Generate SARIF Report)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'python-app:latest'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: 📤 Upload Trivy Report to GitHub Security Dashboard
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_SECURITY_TOKEN }}

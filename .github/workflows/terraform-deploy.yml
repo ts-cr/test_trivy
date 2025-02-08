@@ -1,0 +1,41 @@
+name: Terraform Deployment
+
+on:
+  push:
+    paths:
+      - 'terraform/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 📦 Terraform Apply
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠️ Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: 🔑 Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: 🏗️ Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: latest
+
+      - name: 📂 Initialize Terraform
+        run: cd terraform && terraform init
+
+      - name: 🔍 Validate Terraform
+        run: cd terraform && terraform validate
+
+      - name: 🔄 Plan Terraform
+        run: cd terraform && terraform plan -out=tfplan
+
+      - name: 🚀 Apply Terraform
+        run: cd terraform && terraform apply -auto-approve tfplan

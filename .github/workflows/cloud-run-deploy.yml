@@ -1,0 +1,38 @@
+name: Deploy to Cloud Run
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    needs: security_scan  # Asegura que el job de seguridad pase antes de desplegar
+
+    steps:
+      - name: 🛠️ Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: 🔑 Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: 🚀 Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
+
+      - name: 🏗️ Setup Docker
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: 🔨 Build Docker Image
+        run: |
+          docker build -t us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT_ID }}/python-cloud-run/python-app:latest .
+
+      - name: 📤 Push Docker Image
+        run: |
+          docker push us-central1-docker.pkg.dev/${{ secrets.GOOGLE_PROJECT_ID }}/python-cloud-run/python-app:latest
