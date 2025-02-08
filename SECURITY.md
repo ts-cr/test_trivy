@@ -6,588 +6,53 @@
 ## Vulnerabilidades Detectadas
 | Severidad  | Tipo          | Descripción                           | Recurso Afectado          |
 |------------|---------------|---------------------------------------|---------------------------|
-| LOW | CVE-2011-3374 | It was found that apt-key in apt, all versions, do not correctly valid ... | apt |
-| LOW | TEMP-0841856-B18BAF | [Privilege escalation possible to other user than root] | bash |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | binutils |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | binutils |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | binutils |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | binutils |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | binutils |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | binutils |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | binutils |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | binutils |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | binutils |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | binutils-common |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | binutils-common |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | binutils-common |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | binutils-common |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | binutils-common |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | binutils-common |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | binutils-common |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | binutils-common |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | binutils-common |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | binutils-x86-64-linux-gnu |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | binutils-x86-64-linux-gnu |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | binutils-x86-64-linux-gnu |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | binutils-x86-64-linux-gnu |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | binutils-x86-64-linux-gnu |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | binutils-x86-64-linux-gnu |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | binutils-x86-64-linux-gnu |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | binutils-x86-64-linux-gnu |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | binutils-x86-64-linux-gnu |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | bsdutils |
-| LOW | CVE-2016-2781 | coreutils: Non-privileged session can escape to the parent session in chroot | coreutils |
-| LOW | CVE-2017-18018 | coreutils: race condition vulnerability in chown and chgrp | coreutils |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | cpp-12 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | cpp-12 |
-| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | curl |
-| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | curl |
-| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | curl |
-| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | curl |
-| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | curl |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | dirmngr |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | g++-12 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | g++-12 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | gcc-12 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | gcc-12 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | gcc-12-base |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | gcc-12-base |
-| LOW | CVE-2018-1000021 | git: client prints server-sent ANSI escape codes to the terminal, allowing for unverified messages to potentially execute arbitrary commands | git |
-| LOW | CVE-2022-24975 | git: The --mirror option for git leaks secret for deleted content, aka the "GitBleed" | git |
-| LOW | CVE-2024-52005 | git: The sideband payload is passed unfiltered to the terminal in git | git |
-| LOW | CVE-2018-1000021 | git: client prints server-sent ANSI escape codes to the terminal, allowing for unverified messages to potentially execute arbitrary commands | git-man |
-| LOW | CVE-2022-24975 | git: The --mirror option for git leaks secret for deleted content, aka the "GitBleed" | git-man |
-| LOW | CVE-2024-52005 | git: The sideband payload is passed unfiltered to the terminal in git | git-man |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gnupg |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gnupg-l10n |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gnupg-utils |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg-agent |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg-wks-client |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg-wks-server |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpgconf |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpgsm |
-| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpgv |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | imagemagick |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | imagemagick |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | imagemagick |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | imagemagick |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | imagemagick |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | imagemagick |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | imagemagick |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | imagemagick |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | imagemagick |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | imagemagick-6-common |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | imagemagick-6-common |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | imagemagick-6-common |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | imagemagick-6-common |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | imagemagick-6-common |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | imagemagick-6-common |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | imagemagick-6-common |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | imagemagick-6-common |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | imagemagick-6-common |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | imagemagick-6.q16 |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | imagemagick-6.q16 |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | imagemagick-6.q16 |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | imagemagick-6.q16 |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | imagemagick-6.q16 |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | imagemagick-6.q16 |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | imagemagick-6.q16 |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | imagemagick-6.q16 |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | imagemagick-6.q16 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | krb5-multidev |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | krb5-multidev |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | krb5-multidev |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | krb5-multidev |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | krb5-multidev |
-| CRITICAL | CVE-2023-6879 | aom: heap-buffer-overflow on frame size change | libaom3 |
-| HIGH | CVE-2023-39616 | AOMedia v3.0.0 to v3.5.0 was discovered to contain an invalid read mem ... | libaom3 |
-| LOW | CVE-2011-3374 | It was found that apt-key in apt, all versions, do not correctly valid ... | libapt-pkg6.0 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libasan8 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libasan8 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libatomic1 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libatomic1 |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libbinutils |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libbinutils |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libbinutils |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libbinutils |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libbinutils |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libbinutils |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libbinutils |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libbinutils |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libbinutils |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libblkid-dev |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libblkid1 |
-| HIGH | CVE-2023-44431 | bluez: AVRCP stack-based buffer overflow remote code execution vulnerability | libbluetooth-dev |
-| HIGH | CVE-2023-51596 | bluez: phone book access profile heap-based buffer overflow remote code execution vulnerability | libbluetooth-dev |
-| MEDIUM | CVE-2023-51580 | bluez: avrcp_parse_attribute_list out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
-| MEDIUM | CVE-2023-51589 | bluez: audio profile avrcp parse_media_element out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
-| MEDIUM | CVE-2023-51592 | bluez: audio profile avrcp parse_media_folder out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
-| LOW | CVE-2016-9797 | bluez: buffer over-read in l2cap_dump() | libbluetooth-dev |
-| LOW | CVE-2016-9798 | bluez: use-after-free in conf_opt() | libbluetooth-dev |
-| LOW | CVE-2016-9799 | bluez: buffer overflow in pklg_read_hci() | libbluetooth-dev |
-| LOW | CVE-2016-9800 | bluez: buffer overflow in pin_code_reply_dump() | libbluetooth-dev |
-| LOW | CVE-2016-9801 | bluez: buffer overflow in set_ext_ctrl() | libbluetooth-dev |
-| LOW | CVE-2016-9802 | bluez: buffer over-read in l2cap_packet() | libbluetooth-dev |
-| LOW | CVE-2016-9803 | bluez: out-of-bounds read in le_meta_ev_dump() | libbluetooth-dev |
-| LOW | CVE-2016-9804 | bluez: buffer overflow in commands_dump() | libbluetooth-dev |
-| LOW | CVE-2016-9917 | bluez: Heap-based buffer overflow vulnerability in read_n() | libbluetooth-dev |
-| LOW | CVE-2016-9918 | bluez: Out of bounds stack read in packet_hexdump() | libbluetooth-dev |
-| LOW | CVE-2023-51594 | bluez: OBEX library out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
-| HIGH | CVE-2023-44431 | bluez: AVRCP stack-based buffer overflow remote code execution vulnerability | libbluetooth3 |
-| HIGH | CVE-2023-51596 | bluez: phone book access profile heap-based buffer overflow remote code execution vulnerability | libbluetooth3 |
-| MEDIUM | CVE-2023-51580 | bluez: avrcp_parse_attribute_list out-of-bounds read information disclosure vulnerability | libbluetooth3 |
-| MEDIUM | CVE-2023-51589 | bluez: audio profile avrcp parse_media_element out-of-bounds read information disclosure vulnerability | libbluetooth3 |
-| MEDIUM | CVE-2023-51592 | bluez: audio profile avrcp parse_media_folder out-of-bounds read information disclosure vulnerability | libbluetooth3 |
-| LOW | CVE-2016-9797 | bluez: buffer over-read in l2cap_dump() | libbluetooth3 |
-| LOW | CVE-2016-9798 | bluez: use-after-free in conf_opt() | libbluetooth3 |
-| LOW | CVE-2016-9799 | bluez: buffer overflow in pklg_read_hci() | libbluetooth3 |
-| LOW | CVE-2016-9800 | bluez: buffer overflow in pin_code_reply_dump() | libbluetooth3 |
-| LOW | CVE-2016-9801 | bluez: buffer overflow in set_ext_ctrl() | libbluetooth3 |
-| LOW | CVE-2016-9802 | bluez: buffer over-read in l2cap_packet() | libbluetooth3 |
-| LOW | CVE-2016-9803 | bluez: out-of-bounds read in le_meta_ev_dump() | libbluetooth3 |
-| LOW | CVE-2016-9804 | bluez: buffer overflow in commands_dump() | libbluetooth3 |
-| LOW | CVE-2016-9917 | bluez: Heap-based buffer overflow vulnerability in read_n() | libbluetooth3 |
-| LOW | CVE-2016-9918 | bluez: Out of bounds stack read in packet_hexdump() | libbluetooth3 |
-| LOW | CVE-2023-51594 | bluez: OBEX library out-of-bounds read information disclosure vulnerability | libbluetooth3 |
-| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc-bin |
-| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc-bin |
-| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-bin |
-| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc-bin |
-| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc-bin |
-| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc-bin |
-| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc-bin |
-| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-bin |
-| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc-dev-bin |
-| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc-dev-bin |
-| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-dev-bin |
-| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc-dev-bin |
-| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc-dev-bin |
-| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc-dev-bin |
-| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc-dev-bin |
-| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-dev-bin |
-| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc6 |
-| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc6 |
-| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6 |
-| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc6 |
-| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc6 |
-| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc6 |
-| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc6 |
-| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6 |
-| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc6-dev |
-| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc6-dev |
-| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6-dev |
-| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc6-dev |
-| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc6-dev |
-| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc6-dev |
-| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc6-dev |
-| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6-dev |
-| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo-gobject2 |
-| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo-gobject2 |
-| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo-gobject2 |
-| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo-gobject2 |
-| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo-script-interpreter2 |
-| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo-script-interpreter2 |
-| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo-script-interpreter2 |
-| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo-script-interpreter2 |
-| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo2 |
-| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo2 |
-| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo2 |
-| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo2 |
-| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo2-dev |
-| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo2-dev |
-| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo2-dev |
-| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo2-dev |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libcc1-0 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libcc1-0 |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libctf-nobfd0 |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libctf-nobfd0 |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libctf-nobfd0 |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libctf-nobfd0 |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libctf-nobfd0 |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libctf-nobfd0 |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libctf-nobfd0 |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libctf-nobfd0 |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libctf-nobfd0 |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libctf0 |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libctf0 |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libctf0 |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libctf0 |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libctf0 |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libctf0 |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libctf0 |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libctf0 |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libctf0 |
-| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | libcurl3-gnutls |
-| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | libcurl3-gnutls |
-| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | libcurl3-gnutls |
-| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | libcurl3-gnutls |
-| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | libcurl3-gnutls |
-| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | libcurl4 |
-| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | libcurl4 |
-| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | libcurl4 |
-| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | libcurl4 |
-| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | libcurl4 |
-| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | libcurl4-openssl-dev |
-| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | libcurl4-openssl-dev |
-| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | libcurl4-openssl-dev |
-| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | libcurl4-openssl-dev |
-| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | libcurl4-openssl-dev |
-| MEDIUM | CVE-2023-32570 | VideoLAN dav1d before 1.2.0 has a thread_task.c race condition that ca ... | libdav1d6 |
-| MEDIUM | CVE-2023-51792 | Buffer Overflow vulnerability in libde265 v1.0.12 allows a local attac ... | libde265-0 |
-| MEDIUM | CVE-2024-38949 | Heap Buffer Overflow vulnerability in Libde265 v1.0.15 allows attacker ... | libde265-0 |
-| MEDIUM | CVE-2024-38950 | Heap Buffer Overflow vulnerability in Libde265 v1.0.15 allows attacker ... | libde265-0 |
-| MEDIUM | CVE-2021-46310 | An issue was discovered IW44Image.cpp in djvulibre 3.5.28 in allows at ... | libdjvulibre-dev |
-| MEDIUM | CVE-2021-46312 | An issue was discovered IW44EncodeCodec.cpp in djvulibre 3.5.28 in all ... | libdjvulibre-dev |
-| MEDIUM | CVE-2021-46310 | An issue was discovered IW44Image.cpp in djvulibre 3.5.28 in allows at ... | libdjvulibre-text |
-| MEDIUM | CVE-2021-46312 | An issue was discovered IW44EncodeCodec.cpp in djvulibre 3.5.28 in all ... | libdjvulibre-text |
-| MEDIUM | CVE-2021-46310 | An issue was discovered IW44Image.cpp in djvulibre 3.5.28 in allows at ... | libdjvulibre21 |
-| MEDIUM | CVE-2021-46312 | An issue was discovered IW44EncodeCodec.cpp in djvulibre 3.5.28 in all ... | libdjvulibre21 |
-| LOW | CVE-2024-25260 | elfutils: global-buffer-overflow exists in the function ebl_machine_flag_name in eblmachineflagname.c | libelf1 |
-| HIGH | CVE-2023-52425 | expat: parsing large tokens can trigger a denial of service | libexpat1 |
-| MEDIUM | CVE-2024-50602 | libexpat: expat: DoS via XML_ResumeParser | libexpat1 |
-| LOW | CVE-2023-52426 | expat: recursive XML entity expansion vulnerability | libexpat1 |
-| LOW | CVE-2024-28757 | expat: XML Entity Expansion | libexpat1 |
-| HIGH | CVE-2023-52425 | expat: parsing large tokens can trigger a denial of service | libexpat1-dev |
-| MEDIUM | CVE-2024-50602 | libexpat: expat: DoS via XML_ResumeParser | libexpat1-dev |
-| LOW | CVE-2023-52426 | expat: recursive XML entity expansion vulnerability | libexpat1-dev |
-| LOW | CVE-2024-28757 | expat: XML Entity Expansion | libexpat1-dev |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libgcc-12-dev |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libgcc-12-dev |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libgcc-s1 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libgcc-s1 |
-| MEDIUM | CVE-2024-2236 | libgcrypt: vulnerable to Marvin Attack | libgcrypt20 |
-| LOW | CVE-2018-6829 | libgcrypt: ElGamal implementation doesn't have semantic security due to incorrectly encoded plaintexts possibly allowing to obtain sensitive information | libgcrypt20 |
-| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-0 |
-| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-bin |
-| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-data |
-| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-dev |
-| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-dev-bin |
-| LOW | CVE-2011-3389 | HTTPS: block-wise chosen-plaintext attack against SSL/TLS (BEAST) | libgnutls30 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libgomp1 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libgomp1 |
-| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libgprofng0 |
-| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libgprofng0 |
-| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libgprofng0 |
-| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libgprofng0 |
-| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libgprofng0 |
-| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libgprofng0 |
-| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libgprofng0 |
-| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libgprofng0 |
-| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libgprofng0 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libgssapi-krb5-2 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libgssapi-krb5-2 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libgssapi-krb5-2 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libgssapi-krb5-2 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libgssapi-krb5-2 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libgssrpc4 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libgssrpc4 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libgssrpc4 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libgssrpc4 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libgssrpc4 |
-| HIGH | CVE-2023-25193 | harfbuzz: allows attackers to trigger O(n^2) growth via consecutive marks | libharfbuzz0b |
-| LOW | CVE-2023-49463 | libheif v1.17.5 was discovered to contain a segmentation violation via ... | libheif1 |
-| LOW | CVE-2024-25269 | libheif <= 1.17.6 contains a memory leak in the function JpegEncoder:: ... | libheif1 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libitm1 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libitm1 |
-| LOW | CVE-2020-36325 | jansson: out-of-bounds read in json_loads() due to a parsing error | libjansson4 |
-| LOW | CVE-2017-9937 | libtiff: memory malloc failure in tif_jbig.c could cause DOS. | libjbig-dev |
-| LOW | CVE-2017-9937 | libtiff: memory malloc failure in tif_jbig.c could cause DOS. | libjbig0 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libk5crypto3 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libk5crypto3 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libk5crypto3 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libk5crypto3 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libk5crypto3 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkadm5clnt-mit12 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkadm5clnt-mit12 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkadm5clnt-mit12 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkadm5clnt-mit12 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkadm5clnt-mit12 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkadm5srv-mit12 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkadm5srv-mit12 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkadm5srv-mit12 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkadm5srv-mit12 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkadm5srv-mit12 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkdb5-10 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkdb5-10 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkdb5-10 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkdb5-10 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkdb5-10 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkrb5-3 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkrb5-3 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkrb5-3 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkrb5-3 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkrb5-3 |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkrb5-dev |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkrb5-dev |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkrb5-dev |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkrb5-dev |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkrb5-dev |
-| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkrb5support0 |
-| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkrb5support0 |
-| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkrb5support0 |
-| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkrb5support0 |
-| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkrb5support0 |
-| HIGH | CVE-2023-2953 | openldap: null pointer dereference in  ber_memalloc_x  function | libldap-2.5-0 |
-| LOW | CVE-2015-3276 | openldap: incorrect multi-keyword mode cipherstring parsing | libldap-2.5-0 |
-| LOW | CVE-2017-14159 | openldap: Privilege escalation via PID file manipulation | libldap-2.5-0 |
-| LOW | CVE-2017-17740 | openldap: contrib/slapd-modules/nops/nops.c attempts to free stack buffer allowing remote attackers to cause a denial of service | libldap-2.5-0 |
-| LOW | CVE-2020-15719 | openldap: Certificate validation incorrectly matches name against CN-ID | libldap-2.5-0 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | liblsan0 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | liblsan0 |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6-arch-config |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6-arch-config |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6-arch-config |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6-arch-config |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6-arch-config |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6-arch-config |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6-arch-config |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6-arch-config |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6-arch-config |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6-headers |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6-headers |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6-headers |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6-headers |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6-headers |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6-headers |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6-headers |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6-headers |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6-headers |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6.q16-6 |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6.q16-6 |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6.q16-6 |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6.q16-6 |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6.q16-6 |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6.q16-6 |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6.q16-6 |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6.q16-6 |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6.q16-6 |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6.q16-6-extra |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6.q16-dev |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6.q16-dev |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6.q16-dev |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6.q16-dev |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6.q16-dev |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6.q16-dev |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6.q16-dev |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6.q16-dev |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6.q16-dev |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-dev |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-dev |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-dev |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-dev |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-dev |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-dev |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-dev |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-dev |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-dev |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-6-headers |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-6-headers |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-6-headers |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-6-headers |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-6-headers |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-6-headers |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-6-headers |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-6-headers |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-6-headers |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-6.q16-6 |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-6.q16-6 |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-6.q16-6 |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-6.q16-6 |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-6.q16-6 |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-6.q16-6 |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-6.q16-6 |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-6.q16-6 |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-6.q16-6 |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-6.q16-dev |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-6.q16-dev |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-6.q16-dev |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-6.q16-dev |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-6.q16-dev |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-6.q16-dev |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-6.q16-dev |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-6.q16-dev |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-6.q16-dev |
-| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-dev |
-| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-dev |
-| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-dev |
-| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-dev |
-| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-dev |
-| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-dev |
-| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-dev |
-| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-dev |
-| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-dev |
-| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | libmariadb-dev |
-| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | libmariadb-dev-compat |
-| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | libmariadb3 |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libmount-dev |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libmount1 |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncurses-dev |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncurses5-dev |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncurses6 |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncursesw5-dev |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncursesw6 |
+| CRITICAL | CVE-2023-45853 | zlib: integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6 | zlib1g |
+| CRITICAL | CVE-2023-45853 | zlib: integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6 | zlib1g-dev |
 | CRITICAL | CVE-2023-5841 | OpenEXR: Heap Overflow in Scanline Deep Data Parsing | libopenexr-3-1-30 |
-| LOW | CVE-2017-14988 | OpenEXR: Excessive memory allocation in Header::readfrom | libopenexr-3-1-30 |
-| UNKNOWN | CVE-2024-31047 | An issue in Academy Software Foundation openexr v.3.2.3 and before all ... | libopenexr-3-1-30 |
 | CRITICAL | CVE-2023-5841 | OpenEXR: Heap Overflow in Scanline Deep Data Parsing | libopenexr-dev |
-| LOW | CVE-2017-14988 | OpenEXR: Excessive memory allocation in Header::readfrom | libopenexr-dev |
-| UNKNOWN | CVE-2024-31047 | An issue in Academy Software Foundation openexr v.3.2.3 and before all ... | libopenexr-dev |
-| MEDIUM | CVE-2023-39328 | openjpeg: denail of service via crafted image file | libopenjp2-7 |
-| MEDIUM | CVE-2023-39329 | openjpeg: Resource exhaustion will occur in the opj_t1_decode_cblks function in the tcd.c | libopenjp2-7 |
-| LOW | CVE-2016-10505 | openjpeg: NULL pointer dereference in imagetopnm function in convert.c | libopenjp2-7 |
-| LOW | CVE-2016-9113 | openjpeg2: Multiple security issues | libopenjp2-7 |
-| LOW | CVE-2016-9114 | openjpeg2: Multiple security issues | libopenjp2-7 |
-| LOW | CVE-2016-9115 | openjpeg2: Multiple security issues | libopenjp2-7 |
-| LOW | CVE-2016-9116 | openjpeg2: Multiple security issues | libopenjp2-7 |
-| LOW | CVE-2016-9117 | openjpeg2: Multiple security issues | libopenjp2-7 |
-| LOW | CVE-2016-9580 | openjpeg2: Integer overflow in tiftoimage causes heap buffer overflow | libopenjp2-7 |
-| LOW | CVE-2016-9581 | openjpeg2: Infinite loop in tiftoimage resulting into heap buffer overflow in convert_32s_C1P1 | libopenjp2-7 |
-| LOW | CVE-2017-17479 | openjpeg: Stack-buffer overflow in the pgxtoimage function | libopenjp2-7 |
-| LOW | CVE-2018-16375 | openjpeg: Heap-based buffer overflow in pnmtoimage function in bin/jpwl/convert.c | libopenjp2-7 |
-| LOW | CVE-2018-16376 | openjpeg: Heap-based buffer overflow in function t2_encode_packet in src/lib/openmj2/t2.c | libopenjp2-7 |
-| LOW | CVE-2018-20846 | openjpeg: out-of-bounds read in functions pi_next_lrcp, pi_next_rlcp, pi_next_rpcl, pi_next_pcrl, pi_next_rpcl, and pi_next_cprl in openmj2/pi.c leads to denial of service | libopenjp2-7 |
-| LOW | CVE-2019-6988 | openjpeg: DoS via memory exhaustion in opj_decompress | libopenjp2-7 |
-| MEDIUM | CVE-2023-39328 | openjpeg: denail of service via crafted image file | libopenjp2-7-dev |
-| MEDIUM | CVE-2023-39329 | openjpeg: Resource exhaustion will occur in the opj_t1_decode_cblks function in the tcd.c | libopenjp2-7-dev |
-| LOW | CVE-2016-10505 | openjpeg: NULL pointer dereference in imagetopnm function in convert.c | libopenjp2-7-dev |
-| LOW | CVE-2016-9113 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
-| LOW | CVE-2016-9114 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
-| LOW | CVE-2016-9115 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
-| LOW | CVE-2016-9116 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
-| LOW | CVE-2016-9117 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
-| LOW | CVE-2016-9580 | openjpeg2: Integer overflow in tiftoimage causes heap buffer overflow | libopenjp2-7-dev |
-| LOW | CVE-2016-9581 | openjpeg2: Infinite loop in tiftoimage resulting into heap buffer overflow in convert_32s_C1P1 | libopenjp2-7-dev |
-| LOW | CVE-2017-17479 | openjpeg: Stack-buffer overflow in the pgxtoimage function | libopenjp2-7-dev |
-| LOW | CVE-2018-16375 | openjpeg: Heap-based buffer overflow in pnmtoimage function in bin/jpwl/convert.c | libopenjp2-7-dev |
-| LOW | CVE-2018-16376 | openjpeg: Heap-based buffer overflow in function t2_encode_packet in src/lib/openmj2/t2.c | libopenjp2-7-dev |
-| LOW | CVE-2018-20846 | openjpeg: out-of-bounds read in functions pi_next_lrcp, pi_next_rlcp, pi_next_rpcl, pi_next_pcrl, pi_next_rpcl, and pi_next_cprl in openmj2/pi.c leads to denial of service | libopenjp2-7-dev |
-| LOW | CVE-2019-6988 | openjpeg: DoS via memory exhaustion in opj_decompress | libopenjp2-7-dev |
-| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam-modules |
-| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam-modules |
-| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam-modules-bin |
-| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam-modules-bin |
-| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam-runtime |
-| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam-runtime |
-| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam0g |
-| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam0g |
-| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | libperl5.36 |
-| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | libperl5.36 |
-| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | libperl5.36 |
-| LOW | CVE-2023-37769 | stress-test master commit e4c878 was discovered to contain a FPE vulne ... | libpixman-1-0 |
-| LOW | CVE-2023-37769 | stress-test master commit e4c878 was discovered to contain a FPE vulne ... | libpixman-1-dev |
-| LOW | CVE-2021-4214 | libpng: hardcoded value leads to heap-overflow | libpng-dev |
-| LOW | CVE-2021-4214 | libpng: hardcoded value leads to heap-overflow | libpng16-16 |
-| LOW | CVE-2023-4016 | procps: ps buffer overflow | libproc2-0 |
-| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | libpython3.11-minimal |
-| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | libpython3.11-stdlib |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libquadmath0 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libquadmath0 |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libsmartcols1 |
-| LOW | CVE-2021-45346 | sqlite: crafted SQL query allows a malicious user to obtain sensitive information | libsqlite3-0 |
-| LOW | CVE-2021-45346 | sqlite: crafted SQL query allows a malicious user to obtain sensitive information | libsqlite3-dev |
-| MEDIUM | CVE-2024-13176 | openssl: Timing side-channel in ECDSA signature computation | libssl-dev |
-| MEDIUM | CVE-2024-13176 | openssl: Timing side-channel in ECDSA signature computation | libssl3 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libstdc++-12-dev |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libstdc++-12-dev |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libstdc++6 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libstdc++6 |
-| LOW | CVE-2024-46901 | Subversion: Apache Subversion: mod_dav_svn denial-of-service via control characters in paths | libsvn1 |
-| LOW | CVE-2013-4392 | systemd: TOCTOU race condition when updating file permissions and SELinux security contexts | libsystemd0 |
-| LOW | CVE-2023-31437 | An issue was discovered in systemd 253. An attacker can modify a seale ... | libsystemd0 |
-| LOW | CVE-2023-31438 | An issue was discovered in systemd 253. An attacker can truncate a sea ... | libsystemd0 |
-| LOW | CVE-2023-31439 | An issue was discovered in systemd 253. An attacker can modify the con ... | libsystemd0 |
-| UNKNOWN | CVE-2024-12133 | null | libtasn1-6 |
-| LOW | CVE-2021-35331 | In Tcl 8.6.11, a format string vulnerability in nmakehlp.c might allow ... | libtcl8.6 |
-| HIGH | CVE-2023-52355 | libtiff: TIFFRasterScanlineSize64 produce too-big size and could cause OOM | libtiff-dev |
-| MEDIUM | CVE-2023-6277 | libtiff: Out-of-memory in TIFFOpen via a craft file | libtiff-dev |
-| LOW | CVE-2017-16232 | libtiff: Memory leaks in tif_open.c, tif_lzw.c, and tif_aux.c | libtiff-dev |
-| LOW | CVE-2017-17973 | libtiff: heap-based use after free in tiff2pdf.c:t2p_writeproc | libtiff-dev |
-| LOW | CVE-2017-5563 | libtiff: Heap-buffer overflow in LZWEncode tif_lzw.c | libtiff-dev |
-| LOW | CVE-2017-9117 | libtiff: Heap-based buffer over-read in bmp2tiff | libtiff-dev |
-| LOW | CVE-2018-10126 | libtiff: NULL pointer dereference in the jpeg_fdct_16x16 function in jfdctint.c | libtiff-dev |
-| LOW | CVE-2022-1210 | tiff: Malicious file leads to a denial of service in TIFF File Handler | libtiff-dev |
-| LOW | CVE-2023-1916 | libtiff: out-of-bounds read in extractImageSection() in tools/tiffcrop.c | libtiff-dev |
-| LOW | CVE-2023-3164 | libtiff: heap-buffer-overflow in extractImageSection() | libtiff-dev |
-| LOW | CVE-2023-6228 | libtiff: heap-based buffer overflow in cpStripToTile() in tools/tiffcp.c | libtiff-dev |
-| HIGH | CVE-2023-52355 | libtiff: TIFFRasterScanlineSize64 produce too-big size and could cause OOM | libtiff6 |
-| MEDIUM | CVE-2023-6277 | libtiff: Out-of-memory in TIFFOpen via a craft file | libtiff6 |
-| LOW | CVE-2017-16232 | libtiff: Memory leaks in tif_open.c, tif_lzw.c, and tif_aux.c | libtiff6 |
-| LOW | CVE-2017-17973 | libtiff: heap-based use after free in tiff2pdf.c:t2p_writeproc | libtiff6 |
-| LOW | CVE-2017-5563 | libtiff: Heap-buffer overflow in LZWEncode tif_lzw.c | libtiff6 |
-| LOW | CVE-2017-9117 | libtiff: Heap-based buffer over-read in bmp2tiff | libtiff6 |
-| LOW | CVE-2018-10126 | libtiff: NULL pointer dereference in the jpeg_fdct_16x16 function in jfdctint.c | libtiff6 |
-| LOW | CVE-2022-1210 | tiff: Malicious file leads to a denial of service in TIFF File Handler | libtiff6 |
-| LOW | CVE-2023-1916 | libtiff: out-of-bounds read in extractImageSection() in tools/tiffcrop.c | libtiff6 |
-| LOW | CVE-2023-3164 | libtiff: heap-buffer-overflow in extractImageSection() | libtiff6 |
-| LOW | CVE-2023-6228 | libtiff: heap-based buffer overflow in cpStripToTile() in tools/tiffcp.c | libtiff6 |
-| HIGH | CVE-2023-52355 | libtiff: TIFFRasterScanlineSize64 produce too-big size and could cause OOM | libtiffxx6 |
-| MEDIUM | CVE-2023-6277 | libtiff: Out-of-memory in TIFFOpen via a craft file | libtiffxx6 |
-| LOW | CVE-2017-16232 | libtiff: Memory leaks in tif_open.c, tif_lzw.c, and tif_aux.c | libtiffxx6 |
-| LOW | CVE-2017-17973 | libtiff: heap-based use after free in tiff2pdf.c:t2p_writeproc | libtiffxx6 |
-| LOW | CVE-2017-5563 | libtiff: Heap-buffer overflow in LZWEncode tif_lzw.c | libtiffxx6 |
-| LOW | CVE-2017-9117 | libtiff: Heap-based buffer over-read in bmp2tiff | libtiffxx6 |
-| LOW | CVE-2018-10126 | libtiff: NULL pointer dereference in the jpeg_fdct_16x16 function in jfdctint.c | libtiffxx6 |
-| LOW | CVE-2022-1210 | tiff: Malicious file leads to a denial of service in TIFF File Handler | libtiffxx6 |
-| LOW | CVE-2023-1916 | libtiff: out-of-bounds read in extractImageSection() in tools/tiffcrop.c | libtiffxx6 |
-| LOW | CVE-2023-3164 | libtiff: heap-buffer-overflow in extractImageSection() | libtiffxx6 |
-| LOW | CVE-2023-6228 | libtiff: heap-based buffer overflow in cpStripToTile() in tools/tiffcp.c | libtiffxx6 |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libtinfo6 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libtsan2 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libtsan2 |
-| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libubsan1 |
-| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libubsan1 |
-| LOW | CVE-2013-4392 | systemd: TOCTOU race condition when updating file permissions and SELinux security contexts | libudev1 |
-| LOW | CVE-2023-31437 | An issue was discovered in systemd 253. An attacker can modify a seale ... | libudev1 |
-| LOW | CVE-2023-31438 | An issue was discovered in systemd 253. An attacker can truncate a sea ... | libudev1 |
-| LOW | CVE-2023-31439 | An issue was discovered in systemd 253. An attacker can modify the con ... | libudev1 |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libuuid1 |
-| LOW | CVE-2007-3476 | libgd Denial of service by corrupted GIF images | libwmf-0.2-7 |
-| LOW | CVE-2007-3477 | gd: arc drawing functions can consume large amount of CPU time | libwmf-0.2-7 |
-| LOW | CVE-2007-3996 | php multiple integer overflows in gd | libwmf-0.2-7 |
-| LOW | CVE-2009-3546 | gd: insufficient input validation in _gdGetColors() | libwmf-0.2-7 |
-| LOW | TEMP-0601525-BEBB65 | [libgd2: gdImageColorTransparent can write outside buffer] | libwmf-0.2-7 |
-| LOW | CVE-2007-3476 | libgd Denial of service by corrupted GIF images | libwmf-dev |
-| LOW | CVE-2007-3477 | gd: arc drawing functions can consume large amount of CPU time | libwmf-dev |
-| LOW | CVE-2007-3996 | php multiple integer overflows in gd | libwmf-dev |
-| LOW | CVE-2009-3546 | gd: insufficient input validation in _gdGetColors() | libwmf-dev |
-| LOW | TEMP-0601525-BEBB65 | [libgd2: gdImageColorTransparent can write outside buffer] | libwmf-dev |
-| LOW | CVE-2007-3476 | libgd Denial of service by corrupted GIF images | libwmflite-0.2-7 |
-| LOW | CVE-2007-3477 | gd: arc drawing functions can consume large amount of CPU time | libwmflite-0.2-7 |
-| LOW | CVE-2007-3996 | php multiple integer overflows in gd | libwmflite-0.2-7 |
-| LOW | CVE-2009-3546 | gd: insufficient input validation in _gdGetColors() | libwmflite-0.2-7 |
-| LOW | TEMP-0601525-BEBB65 | [libgd2: gdImageColorTransparent can write outside buffer] | libwmflite-0.2-7 |
-| HIGH | CVE-2022-49043 | libxml: use-after-free in xmlXIncludeAddNode | libxml2 |
-| HIGH | CVE-2024-25062 | libxml2: use-after-free in XMLReader | libxml2 |
-| MEDIUM | CVE-2023-39615 | libxml2: crafted xml can cause global buffer overflow | libxml2 |
-| MEDIUM | CVE-2023-45322 | libxml2: use-after-free in xmlUnlinkNode() in tree.c | libxml2 |
-| LOW | CVE-2024-34459 | libxml2: buffer over-read in xmlHTMLPrintFileContext in xmllint.c | libxml2 |
-| HIGH | CVE-2022-49043 | libxml: use-after-free in xmlXIncludeAddNode | libxml2-dev |
-| HIGH | CVE-2024-25062 | libxml2: use-after-free in XMLReader | libxml2-dev |
-| MEDIUM | CVE-2023-39615 | libxml2: crafted xml can cause global buffer overflow | libxml2-dev |
-| MEDIUM | CVE-2023-45322 | libxml2: use-after-free in xmlUnlinkNode() in tree.c | libxml2-dev |
-| LOW | CVE-2024-34459 | libxml2: buffer over-read in xmlHTMLPrintFileContext in xmllint.c | libxml2-dev |
-| LOW | CVE-2015-9019 | libxslt: math.random() in xslt uses unseeded randomness | libxslt1-dev |
-| LOW | CVE-2015-9019 | libxslt: math.random() in xslt uses unseeded randomness | libxslt1.1 |
+| CRITICAL | CVE-2023-6879 | aom: heap-buffer-overflow on frame size change | libaom3 |
+| CRITICAL | CVE-2024-38428 | wget: Misinterpretation of input may lead to improper behavior | wget |
 | HIGH | CVE-2013-7445 | kernel: memory exhaustion via crafted Graphics Execution Manager (GEM) objects | linux-libc-dev |
 | HIGH | CVE-2019-19449 | kernel: mounting a crafted f2fs filesystem image can lead to slab-out-of-bounds read access in f2fs_build_segment_manager in fs/f2fs/segment.c | linux-libc-dev |
 | HIGH | CVE-2019-19814 | kernel: out-of-bounds write in __remove_dirty_segment in fs/f2fs/segment.c | linux-libc-dev |
 | HIGH | CVE-2021-3847 | kernel: low-privileged user privileges escalation | linux-libc-dev |
 | HIGH | CVE-2021-3864 | kernel: descendant's dumpable setting with certain SUID binaries | linux-libc-dev |
+| HIGH | CVE-2022-49043 | libxml: use-after-free in xmlXIncludeAddNode | libxml2 |
+| HIGH | CVE-2022-49043 | libxml: use-after-free in xmlXIncludeAddNode | libxml2-dev |
+| HIGH | CVE-2023-25193 | harfbuzz: allows attackers to trigger O(n^2) growth via consecutive marks | libharfbuzz0b |
+| HIGH | CVE-2023-2953 | openldap: null pointer dereference in  ber_memalloc_x  function | libldap-2.5-0 |
+| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | libperl5.36 |
+| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | perl |
+| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | perl-base |
+| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | perl-modules-5.36 |
+| HIGH | CVE-2023-39616 | AOMedia v3.0.0 to v3.5.0 was discovered to contain an invalid read mem ... | libaom3 |
+| HIGH | CVE-2023-44431 | bluez: AVRCP stack-based buffer overflow remote code execution vulnerability | libbluetooth-dev |
+| HIGH | CVE-2023-44431 | bluez: AVRCP stack-based buffer overflow remote code execution vulnerability | libbluetooth3 |
+| HIGH | CVE-2023-51596 | bluez: phone book access profile heap-based buffer overflow remote code execution vulnerability | libbluetooth-dev |
+| HIGH | CVE-2023-51596 | bluez: phone book access profile heap-based buffer overflow remote code execution vulnerability | libbluetooth3 |
+| HIGH | CVE-2023-52355 | libtiff: TIFFRasterScanlineSize64 produce too-big size and could cause OOM | libtiff-dev |
+| HIGH | CVE-2023-52355 | libtiff: TIFFRasterScanlineSize64 produce too-big size and could cause OOM | libtiff6 |
+| HIGH | CVE-2023-52355 | libtiff: TIFFRasterScanlineSize64 produce too-big size and could cause OOM | libtiffxx6 |
+| HIGH | CVE-2023-52425 | expat: parsing large tokens can trigger a denial of service | libexpat1 |
+| HIGH | CVE-2023-52425 | expat: parsing large tokens can trigger a denial of service | libexpat1-dev |
 | HIGH | CVE-2023-52452 | kernel: bpf: Fix accesses to uninit stack slots | linux-libc-dev |
 | HIGH | CVE-2023-52590 | kernel: ocfs2: Avoid touching renamed directory if parent does not change | linux-libc-dev |
 | HIGH | CVE-2023-52751 | kernel: smb: client: fix use-after-free in smb2_query_info_compound() | linux-libc-dev |
 | HIGH | CVE-2024-21803 | kernel: bluetooth: use-after-free vulnerability in af_bluetooth.c | linux-libc-dev |
+| HIGH | CVE-2024-25062 | libxml2: use-after-free in XMLReader | libxml2 |
+| HIGH | CVE-2024-25062 | libxml2: use-after-free in XMLReader | libxml2-dev |
 | HIGH | CVE-2024-25742 | hw: amd: Instruction raise #VC exception at exit | linux-libc-dev |
 | HIGH | CVE-2024-25743 | hw: amd: Instruction raise #VC exception at exit | linux-libc-dev |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | krb5-multidev |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libgssapi-krb5-2 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libgssrpc4 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libk5crypto3 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkadm5clnt-mit12 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkadm5srv-mit12 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkdb5-10 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkrb5-3 |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkrb5-dev |
+| HIGH | CVE-2024-26462 | krb5: Memory leak at /krb5/src/kdc/ndr.c | libkrb5support0 |
 | HIGH | CVE-2024-26669 | kernel: net/sched: flower: Fix chain template offload | linux-libc-dev |
 | HIGH | CVE-2024-26739 | kernel: net/sched: act_mirred: don't override retval if we already lost the skb | linux-libc-dev |
 | HIGH | CVE-2024-26913 | kernel: drm/amd/display: Fix dcn35 8k30 Underflow/Corruption Issue | linux-libc-dev |
@@ -649,6 +114,7 @@
 | HIGH | CVE-2024-57900 | kernel: ila: serialize calls to nf_register_net_hooks() | linux-libc-dev |
 | HIGH | CVE-2024-57910 | kernel: iio: light: vcnl4035: fix information leak in triggered buffer | linux-libc-dev |
 | HIGH | CVE-2024-57911 | kernel: iio: dummy: iio_simply_dummy_buffer: fix information leak in triggered buffer | linux-libc-dev |
+| HIGH | CVE-2024-6345 | pypa/setuptools: Remote code execution via download functions in the package_index module in pypa/setuptools | setuptools |
 | HIGH | CVE-2025-21631 | kernel: block, bfq: fix waker_bfqq UAF after bfq_split_bfqq() | linux-libc-dev |
 | HIGH | CVE-2025-21647 | kernel: sched: sch_cake: add bounds checks to host bulk flow fairness counts | linux-libc-dev |
 | HIGH | CVE-2025-21648 | kernel: netfilter: conntrack: clamp maximum hashtable size to INT_MAX | linux-libc-dev |
@@ -659,14 +125,47 @@
 | MEDIUM | CVE-2019-20794 | kernel: task processes not being properly ended could lead to resource exhaustion | linux-libc-dev |
 | MEDIUM | CVE-2020-14304 | kernel: ethtool when reading eeprom of device could lead to memory leak | linux-libc-dev |
 | MEDIUM | CVE-2020-36694 | kernel: netfilter: use-after-free in the packet processing context | linux-libc-dev |
+| MEDIUM | CVE-2021-31879 | wget: authorization header disclosure on redirect | wget |
+| MEDIUM | CVE-2021-46310 | An issue was discovered IW44Image.cpp in djvulibre 3.5.28 in allows at ... | libdjvulibre-dev |
+| MEDIUM | CVE-2021-46310 | An issue was discovered IW44Image.cpp in djvulibre 3.5.28 in allows at ... | libdjvulibre-text |
+| MEDIUM | CVE-2021-46310 | An issue was discovered IW44Image.cpp in djvulibre 3.5.28 in allows at ... | libdjvulibre21 |
+| MEDIUM | CVE-2021-46312 | An issue was discovered IW44EncodeCodec.cpp in djvulibre 3.5.28 in all ... | libdjvulibre-dev |
+| MEDIUM | CVE-2021-46312 | An issue was discovered IW44EncodeCodec.cpp in djvulibre 3.5.28 in all ... | libdjvulibre-text |
+| MEDIUM | CVE-2021-46312 | An issue was discovered IW44EncodeCodec.cpp in djvulibre 3.5.28 in all ... | libdjvulibre21 |
 | MEDIUM | CVE-2023-0597 | kernel: x86/mm: Randomize per-cpu entry area | linux-libc-dev |
 | MEDIUM | CVE-2023-21264 | In multiple functions of mem_protect.c, there is a possible way to acc ... | linux-libc-dev |
 | MEDIUM | CVE-2023-23005 | kernel: incorrect check for error case in the memory_tier_init | linux-libc-dev |
 | MEDIUM | CVE-2023-31082 | kernel: sleeping function called from an invalid context in gsmld_write | linux-libc-dev |
+| MEDIUM | CVE-2023-32570 | VideoLAN dav1d before 1.2.0 has a thread_task.c race condition that ca ... | libdav1d6 |
 | MEDIUM | CVE-2023-3397 | kernel: slab-use-after-free Write in txEnd due to race condition | linux-libc-dev |
 | MEDIUM | CVE-2023-37454 | kernel: udf: use-after-free write in udf_close_lvid | linux-libc-dev |
+| MEDIUM | CVE-2023-39328 | openjpeg: denail of service via crafted image file | libopenjp2-7 |
+| MEDIUM | CVE-2023-39328 | openjpeg: denail of service via crafted image file | libopenjp2-7-dev |
+| MEDIUM | CVE-2023-39329 | openjpeg: Resource exhaustion will occur in the opj_t1_decode_cblks function in the tcd.c | libopenjp2-7 |
+| MEDIUM | CVE-2023-39329 | openjpeg: Resource exhaustion will occur in the opj_t1_decode_cblks function in the tcd.c | libopenjp2-7-dev |
+| MEDIUM | CVE-2023-39615 | libxml2: crafted xml can cause global buffer overflow | libxml2 |
+| MEDIUM | CVE-2023-39615 | libxml2: crafted xml can cause global buffer overflow | libxml2-dev |
 | MEDIUM | CVE-2023-4010 | kernel: usb: hcd: malformed USB descriptor leads to infinite loop in usb_giveback_urb() | linux-libc-dev |
 | MEDIUM | CVE-2023-4133 | kernel: cxgb4: use-after-free in ch_flower_stats_cb() | linux-libc-dev |
+| MEDIUM | CVE-2023-45322 | libxml2: use-after-free in xmlUnlinkNode() in tree.c | libxml2 |
+| MEDIUM | CVE-2023-45322 | libxml2: use-after-free in xmlUnlinkNode() in tree.c | libxml2-dev |
+| MEDIUM | CVE-2023-4641 | shadow-utils: possible password leak during passwd(1) change | login |
+| MEDIUM | CVE-2023-4641 | shadow-utils: possible password leak during passwd(1) change | passwd |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncurses-dev |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncurses5-dev |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncurses6 |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncursesw5-dev |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libncursesw6 |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | libtinfo6 |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | ncurses-base |
+| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | ncurses-bin |
+| MEDIUM | CVE-2023-51580 | bluez: avrcp_parse_attribute_list out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
+| MEDIUM | CVE-2023-51580 | bluez: avrcp_parse_attribute_list out-of-bounds read information disclosure vulnerability | libbluetooth3 |
+| MEDIUM | CVE-2023-51589 | bluez: audio profile avrcp parse_media_element out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
+| MEDIUM | CVE-2023-51589 | bluez: audio profile avrcp parse_media_element out-of-bounds read information disclosure vulnerability | libbluetooth3 |
+| MEDIUM | CVE-2023-51592 | bluez: audio profile avrcp parse_media_folder out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
+| MEDIUM | CVE-2023-51592 | bluez: audio profile avrcp parse_media_folder out-of-bounds read information disclosure vulnerability | libbluetooth3 |
+| MEDIUM | CVE-2023-51792 | Buffer Overflow vulnerability in libde265 v1.0.12 allows a local attac ... | libde265-0 |
 | MEDIUM | CVE-2023-52485 | kernel: drm/amd/display: Wake DMCUB before sending a command cause deadlock | linux-libc-dev |
 | MEDIUM | CVE-2023-52586 | kernel: drm/msm/dpu: Add mutex lock in control vblank irq | linux-libc-dev |
 | MEDIUM | CVE-2023-52591 | kernel: reiserfs: Avoid touching renamed directory if parent does not change | linux-libc-dev |
@@ -689,7 +188,31 @@
 | MEDIUM | CVE-2023-52920 | kernel: bpf: support non-r10 register spill/fill to/from stack in precision tracking | linux-libc-dev |
 | MEDIUM | CVE-2023-6039 | kernel: use-after-free in drivers/net/usb/lan78xx.c in lan78xx_disconnect | linux-libc-dev |
 | MEDIUM | CVE-2023-6240 | kernel: Marvin vulnerability side-channel leakage in the RSA decryption operation | linux-libc-dev |
+| MEDIUM | CVE-2023-6277 | libtiff: Out-of-memory in TIFFOpen via a craft file | libtiff-dev |
+| MEDIUM | CVE-2023-6277 | libtiff: Out-of-memory in TIFFOpen via a craft file | libtiff6 |
+| MEDIUM | CVE-2023-6277 | libtiff: Out-of-memory in TIFFOpen via a craft file | libtiffxx6 |
+| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam-modules |
+| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam-modules-bin |
+| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam-runtime |
+| MEDIUM | CVE-2024-10041 | pam: libpam: Libpam vulnerable to read hashed password | libpam0g |
+| MEDIUM | CVE-2024-10524 | wget: GNU Wget is vulnerable to an SSRF attack when accessing partially-user-controlled shorthand URLs | wget |
+| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | curl |
+| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | libcurl3-gnutls |
+| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | libcurl4 |
+| MEDIUM | CVE-2024-11053 | curl: curl netrc password leak | libcurl4-openssl-dev |
+| MEDIUM | CVE-2024-13176 | openssl: Timing side-channel in ECDSA signature computation | libssl-dev |
+| MEDIUM | CVE-2024-13176 | openssl: Timing side-channel in ECDSA signature computation | libssl3 |
+| MEDIUM | CVE-2024-13176 | openssl: Timing side-channel in ECDSA signature computation | openssl |
+| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | libmariadb-dev |
+| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | libmariadb-dev-compat |
+| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | libmariadb3 |
+| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | mariadb-common |
 | MEDIUM | CVE-2024-2193 | hw: Spectre-SRC that is Speculative Race Conditions (SRCs) for synchronization primitives similar like Spectre V1 with possibility to bypass software features (e.g., IPIs, high-precision timers, etc) | linux-libc-dev |
+| MEDIUM | CVE-2024-2236 | libgcrypt: vulnerable to Marvin Attack | libgcrypt20 |
+| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam-modules |
+| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam-modules-bin |
+| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam-runtime |
+| MEDIUM | CVE-2024-22365 | pam: allowing unprivileged user to block another user namespace | libpam0g |
 | MEDIUM | CVE-2024-24855 | kernel: Race condition in lpfc_unregister_fcf_rescan() in scsi/lpfc/lpfc_hbadisc.c | linux-libc-dev |
 | MEDIUM | CVE-2024-24864 | A race condition was found in the Linux kernel's media/dvb-core in dvb ... | linux-libc-dev |
 | MEDIUM | CVE-2024-25740 | kernel: memory leak in ubi driver | linux-libc-dev |
@@ -781,6 +304,8 @@
 | MEDIUM | CVE-2024-38620 | kernel: Bluetooth: HCI: Remove HCI_AMP support | linux-libc-dev |
 | MEDIUM | CVE-2024-38622 | kernel: drm/msm/dpu: Add callback function pointer check before its call | linux-libc-dev |
 | MEDIUM | CVE-2024-38625 | kernel: fs/ntfs3: Check &#39;folio&#39; pointer for NULL | linux-libc-dev |
+| MEDIUM | CVE-2024-38949 | Heap Buffer Overflow vulnerability in Libde265 v1.0.15 allows attacker ... | libde265-0 |
+| MEDIUM | CVE-2024-38950 | Heap Buffer Overflow vulnerability in Libde265 v1.0.15 allows attacker ... | libde265-0 |
 | MEDIUM | CVE-2024-39282 | kernel: net: wwan: t7xx: Fix FSM command timeout issue | linux-libc-dev |
 | MEDIUM | CVE-2024-39293 | kernel: Revert &#34;xsk: Support redirect to any socket bound to the same umem&#34; | linux-libc-dev |
 | MEDIUM | CVE-2024-40945 | kernel: iommu: Return right value in iommu_sva_bind_device() | linux-libc-dev |
@@ -924,6 +449,8 @@
 | MEDIUM | CVE-2024-50289 | kernel: media: av7110: fix a spectre vulnerability | linux-libc-dev |
 | MEDIUM | CVE-2024-50298 | kernel: net: enetc: allocate vf_state during PF probes | linux-libc-dev |
 | MEDIUM | CVE-2024-50304 | kernel: ipv4: ip_tunnel: Fix suspicious RCU usage warning in ip_tunnel_find() | linux-libc-dev |
+| MEDIUM | CVE-2024-50602 | libexpat: expat: DoS via XML_ResumeParser | libexpat1 |
+| MEDIUM | CVE-2024-50602 | libexpat: expat: DoS via XML_ResumeParser | libexpat1-dev |
 | MEDIUM | CVE-2024-53050 | kernel: drm/i915/hdcp: Add encoder check in hdcp2_get_capability | linux-libc-dev |
 | MEDIUM | CVE-2024-53051 | kernel: drm/i915/hdcp: Add encoder check in intel_hdcp_get_capability | linux-libc-dev |
 | MEDIUM | CVE-2024-53056 | kernel: drm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy() | linux-libc-dev |
@@ -1023,6 +550,18 @@
 | MEDIUM | CVE-2024-57940 | kernel: exfat: fix the infinite loop in exfat_readdir() | linux-libc-dev |
 | MEDIUM | CVE-2024-57945 | kernel: riscv: mm: Fix the out of bound issue of vmemmap address | linux-libc-dev |
 | MEDIUM | CVE-2024-57948 | kernel: mac802154: check local interfaces before deleting sdata list | linux-libc-dev |
+| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | curl |
+| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | libcurl3-gnutls |
+| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | libcurl4 |
+| MEDIUM | CVE-2024-9681 | curl: HSTS subdomain overwrites parent cache entry | libcurl4-openssl-dev |
+| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc-bin |
+| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc-dev-bin |
+| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc6 |
+| MEDIUM | CVE-2025-0395 | glibc: buffer overflow in the GNU C Library's assert() | libc6-dev |
+| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | libpython3.11-minimal |
+| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | libpython3.11-stdlib |
+| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | python3.11 |
+| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | python3.11-minimal |
 | MEDIUM | CVE-2025-21629 | kernel: net: reenable NETIF_F_IPV6_CSUM offload for BIG TCP packets | linux-libc-dev |
 | MEDIUM | CVE-2025-21634 | kernel: cgroup/cpuset: remove kernfs active break | linux-libc-dev |
 | MEDIUM | CVE-2025-21635 | kernel: rds: sysctl: rds_tcp_{rcv,snd}buf: avoid using current->nsproxy | linux-libc-dev |
@@ -1055,28 +594,311 @@
 | MEDIUM | CVE-2025-21681 | kernel: openvswitch: fix lockup on tx to unregistering netdev with carrier | linux-libc-dev |
 | MEDIUM | CVE-2025-21682 | kernel: eth: bnxt: always recalculate features after XDP clearing, fix null-deref | linux-libc-dev |
 | MEDIUM | CVE-2025-21683 | kernel: bpf: Fix bpf_sk_select_reuseport() memory leak | linux-libc-dev |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | krb5-multidev |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libgssapi-krb5-2 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libgssrpc4 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libk5crypto3 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkadm5clnt-mit12 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkadm5srv-mit12 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkdb5-10 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkrb5-3 |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkrb5-dev |
+| MEDIUM | CVE-2025-24528 | krb5: overflow when calculating ulog block size | libkrb5support0 |
 | LOW | CVE-2004-0230 | TCP, when using a large Window Size, makes it easier for remote attack ... | linux-libc-dev |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | imagemagick |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | imagemagick-6-common |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | imagemagick-6.q16 |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6-arch-config |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6-headers |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6.q16-6 |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-6.q16-dev |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickcore-dev |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-6-headers |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-6.q16-6 |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-6.q16-dev |
+| LOW | CVE-2005-0406 | A design flaw in image processing software that modifies JPEG images m ... | libmagickwand-dev |
+| LOW | CVE-2005-2541 | tar: does not properly warn the user when extracting setuid or setgid files | tar |
 | LOW | CVE-2005-3660 | Linux kernel 2.4 and 2.6 allows attackers to cause a denial of service ... | linux-libc-dev |
+| LOW | CVE-2007-2243 | OpenSSH 4.6 and earlier, when ChallengeResponseAuthentication is enabl ... | openssh-client |
+| LOW | CVE-2007-2768 | OpenSSH, when using OPIE (One-Time Passwords in Everything) for PAM, a ... | openssh-client |
+| LOW | CVE-2007-3476 | libgd Denial of service by corrupted GIF images | libwmf-0.2-7 |
+| LOW | CVE-2007-3476 | libgd Denial of service by corrupted GIF images | libwmf-dev |
+| LOW | CVE-2007-3476 | libgd Denial of service by corrupted GIF images | libwmflite-0.2-7 |
+| LOW | CVE-2007-3477 | gd: arc drawing functions can consume large amount of CPU time | libwmf-0.2-7 |
+| LOW | CVE-2007-3477 | gd: arc drawing functions can consume large amount of CPU time | libwmf-dev |
+| LOW | CVE-2007-3477 | gd: arc drawing functions can consume large amount of CPU time | libwmflite-0.2-7 |
 | LOW | CVE-2007-3719 | kernel: secretly Monopolizing the CPU Without Superuser Privileges | linux-libc-dev |
+| LOW | CVE-2007-3996 | php multiple integer overflows in gd | libwmf-0.2-7 |
+| LOW | CVE-2007-3996 | php multiple integer overflows in gd | libwmf-dev |
+| LOW | CVE-2007-3996 | php multiple integer overflows in gd | libwmflite-0.2-7 |
+| LOW | CVE-2007-5686 | initscripts in rPath Linux 1 sets insecure permissions for the /var/lo ... | login |
+| LOW | CVE-2007-5686 | initscripts in rPath Linux 1 sets insecure permissions for the /var/lo ... | passwd |
+| LOW | CVE-2008-1687 | m4: unquoted output of maketemp and mkstemp | m4 |
+| LOW | CVE-2008-1688 | m4: code execution via -F argument | m4 |
 | LOW | CVE-2008-2544 | kernel: mounting proc readonly on a different mount point silently mounts it rw if the /proc mount is rw | linux-libc-dev |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | imagemagick |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | imagemagick-6-common |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | imagemagick-6.q16 |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6-arch-config |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6-headers |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6.q16-6 |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-6.q16-dev |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickcore-dev |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-6-headers |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-6.q16-6 |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-6.q16-dev |
+| LOW | CVE-2008-3134 | GraphicsMagick/ImageMagick: multiple crash or DoS issues | libmagickwand-dev |
+| LOW | CVE-2008-3234 | sshd in OpenSSH 4 on Debian GNU/Linux, and the 20070303 OpenSSH snapsh ... | openssh-client |
 | LOW | CVE-2008-4609 | kernel: TCP protocol vulnerabilities from Outpost24 | linux-libc-dev |
+| LOW | CVE-2009-3546 | gd: insufficient input validation in _gdGetColors() | libwmf-0.2-7 |
+| LOW | CVE-2009-3546 | gd: insufficient input validation in _gdGetColors() | libwmf-dev |
+| LOW | CVE-2009-3546 | gd: insufficient input validation in _gdGetColors() | libwmflite-0.2-7 |
 | LOW | CVE-2010-4563 | kernel: ipv6: sniffer detection | linux-libc-dev |
+| LOW | CVE-2010-4651 | patch: directory traversal flaw allows for arbitrary file creation | patch |
+| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc-bin |
+| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc-dev-bin |
+| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc6 |
+| LOW | CVE-2010-4756 | glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions | libc6-dev |
 | LOW | CVE-2010-5321 | kernel: v4l: videobuf: hotfix a bug on multiple calls to mmap() | linux-libc-dev |
+| LOW | CVE-2011-3374 | It was found that apt-key in apt, all versions, do not correctly valid ... | apt |
+| LOW | CVE-2011-3374 | It was found that apt-key in apt, all versions, do not correctly valid ... | libapt-pkg6.0 |
+| LOW | CVE-2011-3389 | HTTPS: block-wise chosen-plaintext attack against SSL/TLS (BEAST) | libgnutls30 |
+| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | libperl5.36 |
+| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | perl |
+| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | perl-base |
+| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | perl-modules-5.36 |
 | LOW | CVE-2011-4915 | fs/proc/base.c in the Linux kernel through 3.1 allows local users to o ... | linux-libc-dev |
 | LOW | CVE-2011-4916 | Linux kernel through 3.1 allows local users to obtain sensitive keystr ... | linux-libc-dev |
 | LOW | CVE-2011-4917 | In the Linux kernel through 3.1 there is an information disclosure iss ... | linux-libc-dev |
+| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-0 |
+| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-bin |
+| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-data |
+| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-dev |
+| LOW | CVE-2012-0039 | glib2: hash table collisions CPU usage DoS | libglib2.0-dev-bin |
 | LOW | CVE-2012-4542 | kernel: block: default SCSI command filter does not accomodate commands overlap across device classes | linux-libc-dev |
+| LOW | CVE-2013-4392 | systemd: TOCTOU race condition when updating file permissions and SELinux security contexts | libsystemd0 |
+| LOW | CVE-2013-4392 | systemd: TOCTOU race condition when updating file permissions and SELinux security contexts | libudev1 |
 | LOW | CVE-2014-9892 | The snd_compr_tstamp function in sound/core/compress_offload.c in the  ... | linux-libc-dev |
 | LOW | CVE-2014-9900 | kernel: Info leak in uninitialized structure ethtool_wolinfo in ethtool_get_wol() | linux-libc-dev |
 | LOW | CVE-2015-2877 | Kernel: Cross-VM ASL INtrospection (CAIN) | linux-libc-dev |
+| LOW | CVE-2015-3276 | openldap: incorrect multi-keyword mode cipherstring parsing | libldap-2.5-0 |
+| LOW | CVE-2015-9019 | libxslt: math.random() in xslt uses unseeded randomness | libxslt1-dev |
+| LOW | CVE-2015-9019 | libxslt: math.random() in xslt uses unseeded randomness | libxslt1.1 |
+| LOW | CVE-2016-10505 | openjpeg: NULL pointer dereference in imagetopnm function in convert.c | libopenjp2-7 |
+| LOW | CVE-2016-10505 | openjpeg: NULL pointer dereference in imagetopnm function in convert.c | libopenjp2-7-dev |
 | LOW | CVE-2016-10723 | An issue was discovered in the Linux kernel through 4.17.2. Since the  ... | linux-libc-dev |
+| LOW | CVE-2016-20012 | openssh: Public key information leak | openssh-client |
+| LOW | CVE-2016-2781 | coreutils: Non-privileged session can escape to the parent session in chroot | coreutils |
 | LOW | CVE-2016-8660 | kernel: xfs: local DoS due to a page lock order bug in the XFS seek hole/data implementation | linux-libc-dev |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | imagemagick |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | imagemagick-6-common |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | imagemagick-6.q16 |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6-arch-config |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6-headers |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6.q16-6 |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-6.q16-dev |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickcore-dev |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-6-headers |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-6.q16-6 |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-6.q16-dev |
+| LOW | CVE-2016-8678 | ImageMagick: Heap-buffer overflow in IsPixelMonochrome | libmagickwand-dev |
+| LOW | CVE-2016-9113 | openjpeg2: Multiple security issues | libopenjp2-7 |
+| LOW | CVE-2016-9113 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
+| LOW | CVE-2016-9114 | openjpeg2: Multiple security issues | libopenjp2-7 |
+| LOW | CVE-2016-9114 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
+| LOW | CVE-2016-9115 | openjpeg2: Multiple security issues | libopenjp2-7 |
+| LOW | CVE-2016-9115 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
+| LOW | CVE-2016-9116 | openjpeg2: Multiple security issues | libopenjp2-7 |
+| LOW | CVE-2016-9116 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
+| LOW | CVE-2016-9117 | openjpeg2: Multiple security issues | libopenjp2-7 |
+| LOW | CVE-2016-9117 | openjpeg2: Multiple security issues | libopenjp2-7-dev |
+| LOW | CVE-2016-9580 | openjpeg2: Integer overflow in tiftoimage causes heap buffer overflow | libopenjp2-7 |
+| LOW | CVE-2016-9580 | openjpeg2: Integer overflow in tiftoimage causes heap buffer overflow | libopenjp2-7-dev |
+| LOW | CVE-2016-9581 | openjpeg2: Infinite loop in tiftoimage resulting into heap buffer overflow in convert_32s_C1P1 | libopenjp2-7 |
+| LOW | CVE-2016-9581 | openjpeg2: Infinite loop in tiftoimage resulting into heap buffer overflow in convert_32s_C1P1 | libopenjp2-7-dev |
+| LOW | CVE-2016-9797 | bluez: buffer over-read in l2cap_dump() | libbluetooth-dev |
+| LOW | CVE-2016-9797 | bluez: buffer over-read in l2cap_dump() | libbluetooth3 |
+| LOW | CVE-2016-9798 | bluez: use-after-free in conf_opt() | libbluetooth-dev |
+| LOW | CVE-2016-9798 | bluez: use-after-free in conf_opt() | libbluetooth3 |
+| LOW | CVE-2016-9799 | bluez: buffer overflow in pklg_read_hci() | libbluetooth-dev |
+| LOW | CVE-2016-9799 | bluez: buffer overflow in pklg_read_hci() | libbluetooth3 |
+| LOW | CVE-2016-9800 | bluez: buffer overflow in pin_code_reply_dump() | libbluetooth-dev |
+| LOW | CVE-2016-9800 | bluez: buffer overflow in pin_code_reply_dump() | libbluetooth3 |
+| LOW | CVE-2016-9801 | bluez: buffer overflow in set_ext_ctrl() | libbluetooth-dev |
+| LOW | CVE-2016-9801 | bluez: buffer overflow in set_ext_ctrl() | libbluetooth3 |
+| LOW | CVE-2016-9802 | bluez: buffer over-read in l2cap_packet() | libbluetooth-dev |
+| LOW | CVE-2016-9802 | bluez: buffer over-read in l2cap_packet() | libbluetooth3 |
+| LOW | CVE-2016-9803 | bluez: out-of-bounds read in le_meta_ev_dump() | libbluetooth-dev |
+| LOW | CVE-2016-9803 | bluez: out-of-bounds read in le_meta_ev_dump() | libbluetooth3 |
+| LOW | CVE-2016-9804 | bluez: buffer overflow in commands_dump() | libbluetooth-dev |
+| LOW | CVE-2016-9804 | bluez: buffer overflow in commands_dump() | libbluetooth3 |
+| LOW | CVE-2016-9917 | bluez: Heap-based buffer overflow vulnerability in read_n() | libbluetooth-dev |
+| LOW | CVE-2016-9917 | bluez: Heap-based buffer overflow vulnerability in read_n() | libbluetooth3 |
+| LOW | CVE-2016-9918 | bluez: Out of bounds stack read in packet_hexdump() | libbluetooth-dev |
+| LOW | CVE-2016-9918 | bluez: Out of bounds stack read in packet_hexdump() | libbluetooth3 |
 | LOW | CVE-2017-0630 | kernel: Information disclosure vulnerability in kernel trace subsystem | linux-libc-dev |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | imagemagick |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | imagemagick-6-common |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | imagemagick-6.q16 |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6-arch-config |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6-headers |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6.q16-6 |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-6.q16-dev |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickcore-dev |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-6-headers |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-6.q16-6 |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-6.q16-dev |
+| LOW | CVE-2017-11754 | ImageMagick: Memory leak in WritePICONImage function | libmagickwand-dev |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | imagemagick |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | imagemagick-6-common |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | imagemagick-6.q16 |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6-arch-config |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6-headers |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6.q16-6 |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-6.q16-dev |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickcore-dev |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-6-headers |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-6.q16-6 |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-6.q16-dev |
+| LOW | CVE-2017-11755 | ImageMagick: Memory leak in WritePICONImage function via mishandled AcquireSemaphoreInfo call | libmagickwand-dev |
 | LOW | CVE-2017-13693 | kernel: ACPI operand cache leak in dsutils.c | linux-libc-dev |
 | LOW | CVE-2017-13694 | kernel: ACPI node and node_ext cache leak | linux-libc-dev |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | binutils |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | binutils-common |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | binutils-x86-64-linux-gnu |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libbinutils |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libctf-nobfd0 |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libctf0 |
+| LOW | CVE-2017-13716 | binutils: Memory leak with the C++ symbol demangler routine in libiberty | libgprofng0 |
+| LOW | CVE-2017-14159 | openldap: Privilege escalation via PID file manipulation | libldap-2.5-0 |
+| LOW | CVE-2017-14988 | OpenEXR: Excessive memory allocation in Header::readfrom | libopenexr-3-1-30 |
+| LOW | CVE-2017-14988 | OpenEXR: Excessive memory allocation in Header::readfrom | libopenexr-dev |
+| LOW | CVE-2017-16232 | libtiff: Memory leaks in tif_open.c, tif_lzw.c, and tif_aux.c | libtiff-dev |
+| LOW | CVE-2017-16232 | libtiff: Memory leaks in tif_open.c, tif_lzw.c, and tif_aux.c | libtiff6 |
+| LOW | CVE-2017-16232 | libtiff: Memory leaks in tif_open.c, tif_lzw.c, and tif_aux.c | libtiffxx6 |
+| LOW | CVE-2017-17479 | openjpeg: Stack-buffer overflow in the pgxtoimage function | libopenjp2-7 |
+| LOW | CVE-2017-17479 | openjpeg: Stack-buffer overflow in the pgxtoimage function | libopenjp2-7-dev |
+| LOW | CVE-2017-17740 | openldap: contrib/slapd-modules/nops/nops.c attempts to free stack buffer allowing remote attackers to cause a denial of service | libldap-2.5-0 |
+| LOW | CVE-2017-17973 | libtiff: heap-based use after free in tiff2pdf.c:t2p_writeproc | libtiff-dev |
+| LOW | CVE-2017-17973 | libtiff: heap-based use after free in tiff2pdf.c:t2p_writeproc | libtiff6 |
+| LOW | CVE-2017-17973 | libtiff: heap-based use after free in tiff2pdf.c:t2p_writeproc | libtiffxx6 |
+| LOW | CVE-2017-18018 | coreutils: race condition vulnerability in chown and chgrp | coreutils |
+| LOW | CVE-2017-5563 | libtiff: Heap-buffer overflow in LZWEncode tif_lzw.c | libtiff-dev |
+| LOW | CVE-2017-5563 | libtiff: Heap-buffer overflow in LZWEncode tif_lzw.c | libtiff6 |
+| LOW | CVE-2017-5563 | libtiff: Heap-buffer overflow in LZWEncode tif_lzw.c | libtiffxx6 |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | imagemagick |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | imagemagick-6-common |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | imagemagick-6.q16 |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6-arch-config |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6-headers |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6.q16-6 |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-6.q16-dev |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickcore-dev |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-6-headers |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-6.q16-6 |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-6.q16-dev |
+| LOW | CVE-2017-7275 | ImageMagick: Memory allocation failure in AcquireMagickMemory (incomplete fix for  CVE-2016-8866) | libmagickwand-dev |
+| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo-gobject2 |
+| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo-script-interpreter2 |
+| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo2 |
+| LOW | CVE-2017-7475 | cairo: NULL pointer dereference with a crafted font file | libcairo2-dev |
+| LOW | CVE-2017-9117 | libtiff: Heap-based buffer over-read in bmp2tiff | libtiff-dev |
+| LOW | CVE-2017-9117 | libtiff: Heap-based buffer over-read in bmp2tiff | libtiff6 |
+| LOW | CVE-2017-9117 | libtiff: Heap-based buffer over-read in bmp2tiff | libtiffxx6 |
+| LOW | CVE-2017-9937 | libtiff: memory malloc failure in tif_jbig.c could cause DOS. | libjbig-dev |
+| LOW | CVE-2017-9937 | libtiff: memory malloc failure in tif_jbig.c could cause DOS. | libjbig0 |
+| LOW | CVE-2018-1000021 | git: client prints server-sent ANSI escape codes to the terminal, allowing for unverified messages to potentially execute arbitrary commands | git |
+| LOW | CVE-2018-1000021 | git: client prints server-sent ANSI escape codes to the terminal, allowing for unverified messages to potentially execute arbitrary commands | git-man |
+| LOW | CVE-2018-10126 | libtiff: NULL pointer dereference in the jpeg_fdct_16x16 function in jfdctint.c | libtiff-dev |
+| LOW | CVE-2018-10126 | libtiff: NULL pointer dereference in the jpeg_fdct_16x16 function in jfdctint.c | libtiff6 |
+| LOW | CVE-2018-10126 | libtiff: NULL pointer dereference in the jpeg_fdct_16x16 function in jfdctint.c | libtiffxx6 |
 | LOW | CVE-2018-1121 | procps: process hiding through race condition enumerating /proc | linux-libc-dev |
 | LOW | CVE-2018-12928 | kernel: NULL pointer dereference in hfs_ext_read_extent in hfs.ko | linux-libc-dev |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | imagemagick |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | imagemagick-6-common |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | imagemagick-6.q16 |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6-arch-config |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6-headers |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6.q16-6 |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-6.q16-dev |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickcore-dev |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-6-headers |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-6.q16-6 |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-6.q16-dev |
+| LOW | CVE-2018-15607 | ImageMagick: CPU Exhaustion via crafted input file | libmagickwand-dev |
+| LOW | CVE-2018-15919 | openssh: User enumeration via malformed packets in authentication requests | openssh-client |
+| LOW | CVE-2018-16375 | openjpeg: Heap-based buffer overflow in pnmtoimage function in bin/jpwl/convert.c | libopenjp2-7 |
+| LOW | CVE-2018-16375 | openjpeg: Heap-based buffer overflow in pnmtoimage function in bin/jpwl/convert.c | libopenjp2-7-dev |
+| LOW | CVE-2018-16376 | openjpeg: Heap-based buffer overflow in function t2_encode_packet in src/lib/openmj2/t2.c | libopenjp2-7 |
+| LOW | CVE-2018-16376 | openjpeg: Heap-based buffer overflow in function t2_encode_packet in src/lib/openmj2/t2.c | libopenjp2-7-dev |
 | LOW | CVE-2018-17977 | kernel: Mishandled interactions among XFRM Netlink messages, IPPROTO_AH packets, and IPPROTO_IP packets resulting in a denial of service | linux-libc-dev |
+| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo-gobject2 |
+| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo-script-interpreter2 |
+| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo2 |
+| LOW | CVE-2018-18064 | cairo: Stack-based buffer overflow via parsing of crafted WebKitGTK+ document | libcairo2-dev |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | binutils |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | binutils-common |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | binutils-x86-64-linux-gnu |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libbinutils |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libctf-nobfd0 |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libctf0 |
+| LOW | CVE-2018-20673 | libiberty: Integer overflow in demangle_template() function | libgprofng0 |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | binutils |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | binutils-common |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | binutils-x86-64-linux-gnu |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libbinutils |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libctf-nobfd0 |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libctf0 |
+| LOW | CVE-2018-20712 | libiberty: heap-based buffer over-read in d_expression_1 | libgprofng0 |
+| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-bin |
+| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-dev-bin |
+| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6 |
+| LOW | CVE-2018-20796 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6-dev |
+| LOW | CVE-2018-20846 | openjpeg: out-of-bounds read in functions pi_next_lrcp, pi_next_rlcp, pi_next_rpcl, pi_next_pcrl, pi_next_rpcl, and pi_next_cprl in openmj2/pi.c leads to denial of service | libopenjp2-7 |
+| LOW | CVE-2018-20846 | openjpeg: out-of-bounds read in functions pi_next_lrcp, pi_next_rlcp, pi_next_rpcl, pi_next_pcrl, pi_next_rpcl, and pi_next_cprl in openmj2/pi.c leads to denial of service | libopenjp2-7-dev |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | krb5-multidev |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libgssapi-krb5-2 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libgssrpc4 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libk5crypto3 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkadm5clnt-mit12 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkadm5srv-mit12 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkdb5-10 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkrb5-3 |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkrb5-dev |
+| LOW | CVE-2018-5709 | krb5: integer overflow in dbentry->n_key_data in kadmin/dbutil/dump.c | libkrb5support0 |
+| LOW | CVE-2018-6829 | libgcrypt: ElGamal implementation doesn't have semantic security due to incorrectly encoded plaintexts possibly allowing to obtain sensitive information | libgcrypt20 |
+| LOW | CVE-2018-6951 | patch: NULL pointer dereference in pch.c:intuit_diff_type() causes a crash | patch |
+| LOW | CVE-2018-6952 | patch: Double free of memory in pch.c:another_hunk() causes a crash | patch |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | binutils |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | binutils-common |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | binutils-x86-64-linux-gnu |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libbinutils |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libctf-nobfd0 |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libctf0 |
+| LOW | CVE-2018-9996 | binutils: Stack-overflow in libiberty/cplus-dem.c causes crash | libgprofng0 |
+| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc-bin |
+| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc-dev-bin |
+| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc6 |
+| LOW | CVE-2019-1010022 | glibc: stack guard protection bypass | libc6-dev |
+| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc-bin |
+| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc-dev-bin |
+| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc6 |
+| LOW | CVE-2019-1010023 | glibc: running ldd on malicious ELF leads to code execution because of wrong size computation | libc6-dev |
+| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc-bin |
+| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc-dev-bin |
+| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc6 |
+| LOW | CVE-2019-1010024 | glibc: ASLR bypass using cache of thread stack and heap | libc6-dev |
+| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc-bin |
+| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc-dev-bin |
+| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc6 |
+| LOW | CVE-2019-1010025 | glibc: information disclosure of heap addresses of pthread_created thread | libc6-dev |
 | LOW | CVE-2019-11191 | kernel: race condition in load_aout_binary() allows local users to bypass ASLR on setuid a.out programs | linux-libc-dev |
 | LOW | CVE-2019-12378 | kernel: unchecked kmalloc of new_ra in ip6_ra_control leads to denial of service | linux-libc-dev |
 | LOW | CVE-2019-12379 | kernel: memory leak in con_insert_unipair in drivers/tty/vt/consolemap.c | linux-libc-dev |
@@ -1093,14 +915,106 @@
 | LOW | CVE-2019-16234 | kernel: null pointer dereference in drivers/net/wireless/intel/iwlwifi/pcie/trans.c | linux-libc-dev |
 | LOW | CVE-2019-19070 | kernel: A memory leak in the spi_gpio_probe() function in drivers/spi/spi-gpio.c allows for a DoS | linux-libc-dev |
 | LOW | CVE-2019-19378 | kernel: out-of-bounds write in index_rbio_pages in fs/btrfs/raid56.c | linux-libc-dev |
+| LOW | CVE-2019-6110 | openssh: Acceptance and display of arbitrary stderr allows for spoofing of scp client output | openssh-client |
+| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo-gobject2 |
+| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo-script-interpreter2 |
+| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo2 |
+| LOW | CVE-2019-6461 | cairo: assertion problem in _cairo_arc_in_direction in cairo-arc.c | libcairo2-dev |
+| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo-gobject2 |
+| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo-script-interpreter2 |
+| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo2 |
+| LOW | CVE-2019-6462 | cairo: infinite loop in the function _arc_error_normalized in the file cairo-arc.c | libcairo2-dev |
+| LOW | CVE-2019-6988 | openjpeg: DoS via memory exhaustion in opj_decompress | libopenjp2-7 |
+| LOW | CVE-2019-6988 | openjpeg: DoS via memory exhaustion in opj_decompress | libopenjp2-7-dev |
+| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-bin |
+| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc-dev-bin |
+| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6 |
+| LOW | CVE-2019-9192 | glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c | libc6-dev |
 | LOW | CVE-2020-11725 | kernel: improper handling of private_size*count multiplication due to count=info->owner typo | linux-libc-dev |
+| LOW | CVE-2020-14145 | openssh: Observable discrepancy leading to an information leak in the algorithm negotiation | openssh-client |
+| LOW | CVE-2020-15719 | openldap: Certificate validation incorrectly matches name against CN-ID | libldap-2.5-0 |
+| LOW | CVE-2020-15778 | openssh: scp allows command injection when using backtick characters in the destination argument | openssh-client |
 | LOW | CVE-2020-35501 | kernel: audit not logging access to syscall open_by_handle_at for users with CAP_DAC_READ_SEARCH capability | linux-libc-dev |
+| LOW | CVE-2020-36325 | jansson: out-of-bounds read in json_loads() due to a parsing error | libjansson4 |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | imagemagick |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | imagemagick-6-common |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | imagemagick-6.q16 |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6-arch-config |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6-headers |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6.q16-6 |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-6.q16-dev |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickcore-dev |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-6-headers |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-6.q16-6 |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-6.q16-dev |
+| LOW | CVE-2021-20311 | ImageMagick: Division by zero in sRGBTransformImage() in MagickCore/colorspace.c | libmagickwand-dev |
 | LOW | CVE-2021-26934 | An issue was discovered in the Linux kernel 4.18 through 5.10.16, as u ... | linux-libc-dev |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | binutils |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | binutils-common |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | binutils-x86-64-linux-gnu |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libbinutils |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libctf-nobfd0 |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libctf0 |
+| LOW | CVE-2021-32256 | binutils: stack-overflow issue in demangle_type in rust-demangle.c. | libgprofng0 |
+| LOW | CVE-2021-35331 | In Tcl 8.6.11, a format string vulnerability in nmakehlp.c might allow ... | libtcl8.6 |
+| LOW | CVE-2021-35331 | In Tcl 8.6.11, a format string vulnerability in nmakehlp.c might allow ... | tcl8.6 |
+| LOW | CVE-2021-35331 | In Tcl 8.6.11, a format string vulnerability in nmakehlp.c might allow ... | tcl8.6-dev |
 | LOW | CVE-2021-3714 | kernel: Remote Page Deduplication Attacks | linux-libc-dev |
+| LOW | CVE-2021-4214 | libpng: hardcoded value leads to heap-overflow | libpng-dev |
+| LOW | CVE-2021-4214 | libpng: hardcoded value leads to heap-overflow | libpng16-16 |
+| LOW | CVE-2021-4217 | unzip: Null pointer dereference in Unicode strings code | unzip |
+| LOW | CVE-2021-45261 | patch: Invalid Pointer via another_hunk function | patch |
+| LOW | CVE-2021-45346 | sqlite: crafted SQL query allows a malicious user to obtain sensitive information | libsqlite3-0 |
+| LOW | CVE-2021-45346 | sqlite: crafted SQL query allows a malicious user to obtain sensitive information | libsqlite3-dev |
 | LOW | CVE-2022-0400 | kernel: Out of bounds read in the smc protocol stack | linux-libc-dev |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | bsdutils |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libblkid-dev |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libblkid1 |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libmount-dev |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libmount1 |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libsmartcols1 |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | libuuid1 |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | mount |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | util-linux |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | util-linux-extra |
+| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | uuid-dev |
+| LOW | CVE-2022-1210 | tiff: Malicious file leads to a denial of service in TIFF File Handler | libtiff-dev |
+| LOW | CVE-2022-1210 | tiff: Malicious file leads to a denial of service in TIFF File Handler | libtiff6 |
+| LOW | CVE-2022-1210 | tiff: Malicious file leads to a denial of service in TIFF File Handler | libtiffxx6 |
 | LOW | CVE-2022-1247 | kernel: A race condition bug in rose_connect() | linux-libc-dev |
+| LOW | CVE-2022-24975 | git: The --mirror option for git leaks secret for deleted content, aka the "GitBleed" | git |
+| LOW | CVE-2022-24975 | git: The --mirror option for git leaks secret for deleted content, aka the "GitBleed" | git-man |
 | LOW | CVE-2022-25265 | kernel: Executable Space Protection Bypass | linux-libc-dev |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | cpp-12 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | g++-12 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | gcc-12 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | gcc-12-base |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libasan8 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libatomic1 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libcc1-0 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libgcc-12-dev |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libgcc-s1 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libgomp1 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libitm1 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | liblsan0 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libquadmath0 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libstdc++-12-dev |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libstdc++6 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libtsan2 |
+| LOW | CVE-2022-27943 | binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows stack exhaustion in demangle_const | libubsan1 |
 | LOW | CVE-2022-2961 | kernel: race condition in rose_bind() | linux-libc-dev |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | dirmngr |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gnupg |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gnupg-l10n |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gnupg-utils |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg-agent |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg-wks-client |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpg-wks-server |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpgconf |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpgsm |
+| LOW | CVE-2022-3219 | gnupg: denial of service issue (resource consumption) using compressed packets | gpgv |
 | LOW | CVE-2022-3238 | kernel: ntfs3 local privledge escalation if NTFS character set and remount and umount called simultaneously | linux-libc-dev |
 | LOW | CVE-2022-41848 | kernel: Race condition between mgslpc_ioctl and mgslpc_detach | linux-libc-dev |
 | LOW | CVE-2022-44032 | Kernel: Race between cmm_open() and cm4000_detach() result in UAF | linux-libc-dev |
@@ -1109,77 +1023,163 @@
 | LOW | CVE-2022-4543 | kernel: KASLR Prefetch Bypass Breaks KPTI | linux-libc-dev |
 | LOW | CVE-2022-45884 | kernel: use-after-free due to race condition occurring in dvb_register_device() | linux-libc-dev |
 | LOW | CVE-2022-45885 | kernel: use-after-free due to race condition occurring in dvb_frontend.c | linux-libc-dev |
+| LOW | CVE-2023-1916 | libtiff: out-of-bounds read in extractImageSection() in tools/tiffcrop.c | libtiff-dev |
+| LOW | CVE-2023-1916 | libtiff: out-of-bounds read in extractImageSection() in tools/tiffcrop.c | libtiff6 |
+| LOW | CVE-2023-1916 | libtiff: out-of-bounds read in extractImageSection() in tools/tiffcrop.c | libtiffxx6 |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | binutils |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | binutils-common |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | binutils-x86-64-linux-gnu |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libbinutils |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libctf-nobfd0 |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libctf0 |
+| LOW | CVE-2023-1972 | binutils: Illegal memory access when accessing a zer0-lengthverdef table | libgprofng0 |
 | LOW | CVE-2023-23039 | kernel: tty: vcc: race condition leading to use-after-free in vcc_open() | linux-libc-dev |
 | LOW | CVE-2023-26242 | afu_mmio_region_get_by_offset in drivers/fpga/dfl-afu-region.c in the  ... | linux-libc-dev |
+| LOW | CVE-2023-29383 | shadow: Improper input validation in shadow-utils package utility chfn | login |
+| LOW | CVE-2023-29383 | shadow: Improper input validation in shadow-utils package utility chfn | passwd |
 | LOW | CVE-2023-31081 | An issue was discovered in drivers/media/test-drivers/vidtv/vidtv_brid ... | linux-libc-dev |
 | LOW | CVE-2023-31085 | kernel: divide-by-zero error in ctrl_cdev_ioctl when do_div happens and erasesize is 0 | linux-libc-dev |
+| LOW | CVE-2023-31437 | An issue was discovered in systemd 253. An attacker can modify a seale ... | libsystemd0 |
+| LOW | CVE-2023-31437 | An issue was discovered in systemd 253. An attacker can modify a seale ... | libudev1 |
+| LOW | CVE-2023-31438 | An issue was discovered in systemd 253. An attacker can truncate a sea ... | libsystemd0 |
+| LOW | CVE-2023-31438 | An issue was discovered in systemd 253. An attacker can truncate a sea ... | libudev1 |
+| LOW | CVE-2023-31439 | An issue was discovered in systemd 253. An attacker can modify the con ... | libsystemd0 |
+| LOW | CVE-2023-31439 | An issue was discovered in systemd 253. An attacker can modify the con ... | libudev1 |
+| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | libperl5.36 |
+| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | perl |
+| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | perl-base |
+| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | perl-modules-5.36 |
+| LOW | CVE-2023-3164 | libtiff: heap-buffer-overflow in extractImageSection() | libtiff-dev |
+| LOW | CVE-2023-3164 | libtiff: heap-buffer-overflow in extractImageSection() | libtiff6 |
+| LOW | CVE-2023-3164 | libtiff: heap-buffer-overflow in extractImageSection() | libtiffxx6 |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | imagemagick |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | imagemagick-6-common |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | imagemagick-6.q16 |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6-arch-config |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6-headers |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6.q16-6 |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6.q16-6-extra |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-6.q16-dev |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickcore-dev |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-6-headers |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-6.q16-6 |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-6.q16-dev |
+| LOW | CVE-2023-34152 | ImageMagick: RCE (shell command injection) vulnerability in OpenBlob with --enable-pipes configured | libmagickwand-dev |
 | LOW | CVE-2023-3640 | Kernel: x86/mm: a per-cpu entry area leak was identified through the init_cea_offsets function when prefetchnta and prefetcht2 instructions being used for the per-cpu entry area mapping to the user space | linux-libc-dev |
+| LOW | CVE-2023-37769 | stress-test master commit e4c878 was discovered to contain a FPE vulne ... | libpixman-1-0 |
+| LOW | CVE-2023-37769 | stress-test master commit e4c878 was discovered to contain a FPE vulne ... | libpixman-1-dev |
 | LOW | CVE-2023-39191 | kernel: eBPF: insufficient stack type checks in dynptr | linux-libc-dev |
+| LOW | CVE-2023-4016 | procps: ps buffer overflow | libproc2-0 |
+| LOW | CVE-2023-4016 | procps: ps buffer overflow | procps |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | cpp-12 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | g++-12 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | gcc-12 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | gcc-12-base |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libasan8 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libatomic1 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libcc1-0 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libgcc-12-dev |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libgcc-s1 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libgomp1 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libitm1 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | liblsan0 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libquadmath0 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libstdc++-12-dev |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libstdc++6 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libtsan2 |
+| LOW | CVE-2023-4039 | gcc: -fstack-protector fails to guard dynamic stack allocations on ARM64 | libubsan1 |
 | LOW | CVE-2023-4134 | kernel: cyttsp4_core: use-after-free in cyttsp4_watchdog_work() | linux-libc-dev |
+| LOW | CVE-2023-49463 | libheif v1.17.5 was discovered to contain a segmentation violation via ... | libheif1 |
+| LOW | CVE-2023-51594 | bluez: OBEX library out-of-bounds read information disclosure vulnerability | libbluetooth-dev |
+| LOW | CVE-2023-51594 | bluez: OBEX library out-of-bounds read information disclosure vulnerability | libbluetooth3 |
+| LOW | CVE-2023-51767 | openssh: authentication bypass via row hammer attack | openssh-client |
+| LOW | CVE-2023-52426 | expat: recursive XML entity expansion vulnerability | libexpat1 |
+| LOW | CVE-2023-52426 | expat: recursive XML entity expansion vulnerability | libexpat1-dev |
+| LOW | CVE-2023-6228 | libtiff: heap-based buffer overflow in cpStripToTile() in tools/tiffcp.c | libtiff-dev |
+| LOW | CVE-2023-6228 | libtiff: heap-based buffer overflow in cpStripToTile() in tools/tiffcp.c | libtiff6 |
+| LOW | CVE-2023-6228 | libtiff: heap-based buffer overflow in cpStripToTile() in tools/tiffcp.c | libtiffxx6 |
 | LOW | CVE-2024-0564 | kernel: max page sharing of Kernel Samepage Merging (KSM) may cause memory deduplication | linux-libc-dev |
+| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | curl |
+| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | libcurl3-gnutls |
+| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | libcurl4 |
+| LOW | CVE-2024-2379 | curl: QUIC certificate check bypass with wolfSSL | libcurl4-openssl-dev |
+| LOW | CVE-2024-25260 | elfutils: global-buffer-overflow exists in the function ebl_machine_flag_name in eblmachineflagname.c | libelf1 |
+| LOW | CVE-2024-25269 | libheif <= 1.17.6 contains a memory leak in the function JpegEncoder:: ... | libheif1 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | krb5-multidev |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libgssapi-krb5-2 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libgssrpc4 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libk5crypto3 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkadm5clnt-mit12 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkadm5srv-mit12 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkdb5-10 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkrb5-3 |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkrb5-dev |
+| LOW | CVE-2024-26458 | krb5: Memory leak at /krb5/src/lib/rpc/pmap_rmt.c | libkrb5support0 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | krb5-multidev |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libgssapi-krb5-2 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libgssrpc4 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libk5crypto3 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkadm5clnt-mit12 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkadm5srv-mit12 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkdb5-10 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkrb5-3 |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkrb5-dev |
+| LOW | CVE-2024-26461 | krb5: Memory leak at /krb5/src/lib/gssapi/krb5/k5sealv3.c | libkrb5support0 |
+| LOW | CVE-2024-28757 | expat: XML Entity Expansion | libexpat1 |
+| LOW | CVE-2024-28757 | expat: XML Entity Expansion | libexpat1-dev |
+| LOW | CVE-2024-34459 | libxml2: buffer over-read in xmlHTMLPrintFileContext in xmllint.c | libxml2 |
+| LOW | CVE-2024-34459 | libxml2: buffer over-read in xmlHTMLPrintFileContext in xmllint.c | libxml2-dev |
 | LOW | CVE-2024-40918 | kernel: parisc: Try to fix random segmentation faults in package builds | linux-libc-dev |
 | LOW | CVE-2024-42155 | kernel: s390/pkey: Wipe copies of protected- and secure-keys | linux-libc-dev |
+| LOW | CVE-2024-46901 | Subversion: Apache Subversion: mod_dav_svn denial-of-service via control characters in paths | libsvn1 |
+| LOW | CVE-2024-46901 | Subversion: Apache Subversion: mod_dav_svn denial-of-service via control characters in paths | subversion |
 | LOW | CVE-2024-50057 | kernel: usb: typec: tipd: Free IRQ only if it was requested before | linux-libc-dev |
 | LOW | CVE-2024-50211 | kernel: udf: refactor inode_bmap() to handle error | linux-libc-dev |
-| LOW | TEMP-0000000-F7A20F | [Kernel: Unprivileged user can freeze journald] | linux-libc-dev |
-| MEDIUM | CVE-2023-4641 | shadow-utils: possible password leak during passwd(1) change | login |
-| LOW | CVE-2007-5686 | initscripts in rPath Linux 1 sets insecure permissions for the /var/lo ... | login |
-| LOW | CVE-2023-29383 | shadow: Improper input validation in shadow-utils package utility chfn | login |
+| LOW | CVE-2024-52005 | git: The sideband payload is passed unfiltered to the terminal in git | git |
+| LOW | CVE-2024-52005 | git: The sideband payload is passed unfiltered to the terminal in git | git-man |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | binutils |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | binutils-common |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | binutils-x86-64-linux-gnu |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libbinutils |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libctf-nobfd0 |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libctf0 |
+| LOW | CVE-2024-53589 | binutils: objdump: buffer Overflow in the BFD library's handling of tekhex format files | libgprofng0 |
 | LOW | CVE-2024-56433 | shadow-utils: Default subordinate ID configuration in /etc/login.defs could lead to compromise | login |
-| LOW | TEMP-0628843-DBAD28 | [more related to CVE-2005-4890] | login |
-| LOW | CVE-2008-1687 | m4: unquoted output of maketemp and mkstemp | m4 |
-| LOW | CVE-2008-1688 | m4: code execution via -F argument | m4 |
-| MEDIUM | CVE-2024-21096 | mysql: Client: mysqldump unspecified vulnerability (CPU Apr 2024) | mariadb-common |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | mount |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | ncurses-base |
-| MEDIUM | CVE-2023-50495 | ncurses: segmentation fault via _nc_wrap_entry() | ncurses-bin |
-| LOW | CVE-2007-2243 | OpenSSH 4.6 and earlier, when ChallengeResponseAuthentication is enabl ... | openssh-client |
-| LOW | CVE-2007-2768 | OpenSSH, when using OPIE (One-Time Passwords in Everything) for PAM, a ... | openssh-client |
-| LOW | CVE-2008-3234 | sshd in OpenSSH 4 on Debian GNU/Linux, and the 20070303 OpenSSH snapsh ... | openssh-client |
-| LOW | CVE-2016-20012 | openssh: Public key information leak | openssh-client |
-| LOW | CVE-2018-15919 | openssh: User enumeration via malformed packets in authentication requests | openssh-client |
-| LOW | CVE-2019-6110 | openssh: Acceptance and display of arbitrary stderr allows for spoofing of scp client output | openssh-client |
-| LOW | CVE-2020-14145 | openssh: Observable discrepancy leading to an information leak in the algorithm negotiation | openssh-client |
-| LOW | CVE-2020-15778 | openssh: scp allows command injection when using backtick characters in the destination argument | openssh-client |
-| LOW | CVE-2023-51767 | openssh: authentication bypass via row hammer attack | openssh-client |
-| MEDIUM | CVE-2024-13176 | openssl: Timing side-channel in ECDSA signature computation | openssl |
-| MEDIUM | CVE-2023-4641 | shadow-utils: possible password leak during passwd(1) change | passwd |
-| LOW | CVE-2007-5686 | initscripts in rPath Linux 1 sets insecure permissions for the /var/lo ... | passwd |
-| LOW | CVE-2023-29383 | shadow: Improper input validation in shadow-utils package utility chfn | passwd |
 | LOW | CVE-2024-56433 | shadow-utils: Default subordinate ID configuration in /etc/login.defs could lead to compromise | passwd |
-| LOW | TEMP-0628843-DBAD28 | [more related to CVE-2005-4890] | passwd |
-| LOW | CVE-2010-4651 | patch: directory traversal flaw allows for arbitrary file creation | patch |
-| LOW | CVE-2018-6951 | patch: NULL pointer dereference in pch.c:intuit_diff_type() causes a crash | patch |
-| LOW | CVE-2018-6952 | patch: Double free of memory in pch.c:another_hunk() causes a crash | patch |
-| LOW | CVE-2021-45261 | patch: Invalid Pointer via another_hunk function | patch |
-| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | perl |
-| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | perl |
-| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | perl |
-| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | perl-base |
-| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | perl-base |
-| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | perl-base |
-| HIGH | CVE-2023-31484 | perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS | perl-modules-5.36 |
-| LOW | CVE-2011-4116 | perl: File:: Temp insecure temporary file handling | perl-modules-5.36 |
-| LOW | CVE-2023-31486 | http-tiny: insecure TLS cert default | perl-modules-5.36 |
-| LOW | CVE-2023-4016 | procps: ps buffer overflow | procps |
-| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | python3.11 |
-| MEDIUM | CVE-2025-0938 | python: cpython: URL parser allowed square brackets in domain names | python3.11-minimal |
-| LOW | CVE-2024-46901 | Subversion: Apache Subversion: mod_dav_svn denial-of-service via control characters in paths | subversion |
-| LOW | TEMP-0517018-A83CE6 | [sysvinit: no-root option in expert installer exposes locally exploitable security flaw] | sysvinit-utils |
-| LOW | CVE-2005-2541 | tar: does not properly warn the user when extracting setuid or setgid files | tar |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | binutils |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | binutils-common |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | binutils-x86-64-linux-gnu |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libbinutils |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libctf-nobfd0 |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libctf0 |
+| LOW | CVE-2024-57360 | binutils: nm: potential segmentation fault when displaying symbols without version info | libgprofng0 |
+| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | curl |
+| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | libcurl3-gnutls |
+| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | libcurl4 |
+| LOW | CVE-2025-0167 | When asked to use a `.netrc` file for credentials **and** to follow HT ... | libcurl4-openssl-dev |
+| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | curl |
+| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | libcurl3-gnutls |
+| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | libcurl4 |
+| LOW | CVE-2025-0725 | libcurl: Buffer Overflow in libcurl via zlib Integer Overflow | libcurl4-openssl-dev |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | binutils |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | binutils-common |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | binutils-x86-64-linux-gnu |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libbinutils |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libctf-nobfd0 |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libctf0 |
+| LOW | CVE-2025-0840 | binutils: GNU Binutils objdump.c disassemble_bytes stack-based overflow | libgprofng0 |
+| LOW | TEMP-0000000-F7A20F | [Kernel: Unprivileged user can freeze journald] | linux-libc-dev |
 | LOW | TEMP-0290435-0B57B5 | [tar's rmt command may have undesired side effects] | tar |
-| LOW | CVE-2021-35331 | In Tcl 8.6.11, a format string vulnerability in nmakehlp.c might allow ... | tcl8.6 |
-| LOW | CVE-2021-35331 | In Tcl 8.6.11, a format string vulnerability in nmakehlp.c might allow ... | tcl8.6-dev |
-| LOW | CVE-2021-4217 | unzip: Null pointer dereference in Unicode strings code | unzip |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | util-linux |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | util-linux-extra |
-| LOW | CVE-2022-0563 | util-linux: partial disclosure of arbitrary files in chfn and chsh when compiled with libreadline | uuid-dev |
-| CRITICAL | CVE-2024-38428 | wget: Misinterpretation of input may lead to improper behavior | wget |
-| MEDIUM | CVE-2021-31879 | wget: authorization header disclosure on redirect | wget |
-| MEDIUM | CVE-2024-10524 | wget: GNU Wget is vulnerable to an SSRF attack when accessing partially-user-controlled shorthand URLs | wget |
-| CRITICAL | CVE-2023-45853 | zlib: integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6 | zlib1g |
-| CRITICAL | CVE-2023-45853 | zlib: integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6 | zlib1g-dev |
-| HIGH | CVE-2024-6345 | pypa/setuptools: Remote code execution via download functions in the package_index module in pypa/setuptools | setuptools |
+| LOW | TEMP-0517018-A83CE6 | [sysvinit: no-root option in expert installer exposes locally exploitable security flaw] | sysvinit-utils |
+| LOW | TEMP-0601525-BEBB65 | [libgd2: gdImageColorTransparent can write outside buffer] | libwmf-0.2-7 |
+| LOW | TEMP-0601525-BEBB65 | [libgd2: gdImageColorTransparent can write outside buffer] | libwmf-dev |
+| LOW | TEMP-0601525-BEBB65 | [libgd2: gdImageColorTransparent can write outside buffer] | libwmflite-0.2-7 |
+| LOW | TEMP-0628843-DBAD28 | [more related to CVE-2005-4890] | login |
+| LOW | TEMP-0628843-DBAD28 | [more related to CVE-2005-4890] | passwd |
+| LOW | TEMP-0841856-B18BAF | [Privilege escalation possible to other user than root] | bash |
+| UNKNOWN | CVE-2024-12133 | libtasn1-6 |  |
+| UNKNOWN | CVE-2024-31047 | An issue in Academy Software Foundation openexr v.3.2.3 and before all ... | libopenexr-3-1-30 |
+| UNKNOWN | CVE-2024-31047 | An issue in Academy Software Foundation openexr v.3.2.3 and before all ... | libopenexr-dev |
 
 ## Nota
 Estas vulnerabilidades son generadas automáticamente mediante Trivy.
