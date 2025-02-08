@@ -41,12 +41,25 @@ jobs:
           echo "## Vulnerabilidades Detectadas" >> SECURITY.md
           echo "| Severidad  | Tipo          | Descripción                           | Recurso Afectado          |" >> SECURITY.md
           echo "|------------|---------------|---------------------------------------|---------------------------|" >> SECURITY.md
-          jq -r '.Results[].Vulnerabilities[] | 
-            select(.Severity) |
-            {"CRITICAL": 1, "HIGH": 2, "MEDIUM": 3, "LOW": 4, "UNKNOWN": 5 }[.Severity] as $order |
-            [.Severity, .VulnerabilityID, .Title, .PkgName, $order] |
-            @csv' trivy-results.json | sort -t, -k5,5n | awk -F',' '{print "| " $1 " | " $2 " | " $3 " | " $4 " |"}' >> SECURITY.md
+          
+          jq -r '
+            .Results[].Vulnerabilities[] |
+            { 
+              severity: .Severity, 
+              vuln_id: .VulnerabilityID, 
+              title: .Title, 
+              pkg: .PkgName,
+              order: (if .Severity == "CRITICAL" then 1 
+                      elif .Severity == "HIGH" then 2 
+                      elif .Severity == "MEDIUM" then 3 
+                      elif .Severity == "LOW" then 4 
+                      else 5 end) 
+            } | 
+            [ .order, .severity, .vuln_id, .title, .pkg ] | 
+            @tsv' trivy-results.json | sort -n | cut -f2- | awk -F'\t' '{print "| " $1 " | " $2 " | " $3 " | " $4 " |"}' >> SECURITY.md
+          
           echo "" >> SECURITY.md
           echo "## Nota" >> SECURITY.md
           echo "Estas vulnerabilidades son generadas automáticamente mediante Trivy." >> SECURITY.md
+        
         
