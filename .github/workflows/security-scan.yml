@@ -55,11 +55,12 @@ jobs:
                       elif .Severity == "LOW" then 4 
                       else 5 end) 
             } | 
-            [ .order, .severity, .vuln_id, .title, .pkg ] | 
-            @tsv' trivy-results.json | sort -n | cut -f2- | awk -F'\t' '{print "| " $1 " | " $2 " | " $3 " | " $4 " |"}' >> SECURITY.md
+            [.order, .severity, .vuln_id, .title, .pkg] | 
+            @tsv' trivy-results.json | sort -k1,1n | cut -f2- | awk -F'\t' '{print "| " $1 " | " $2 " | " $3 " | " $4 " |"}' >> SECURITY.md
           
           echo "" >> SECURITY.md
           echo "## Nota" >> SECURITY.md
           echo "Estas vulnerabilidades son generadas automáticamente mediante Trivy." >> SECURITY.md
-        
+          
+          
         
