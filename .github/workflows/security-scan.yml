@@ -21,7 +21,6 @@ jobs:
       - name: 📥 Install Trivy
         run: |
           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
-      
 
       - name: 🔨 Build Docker Image (Python 3)
         run: |
@@ -30,6 +29,27 @@ jobs:
       - name: 🛡 Run Trivy Scan (Generate JSON Report)
         run: |
           trivy image --format json -o trivy-results.json python-app:latest
+
+      - name: 🛠 Debug Trivy Output
+        run: |
+          echo "=== TRIVY RAW JSON ==="
+          cat trivy-results.json
+          echo "=== JQ PARSED OUTPUT ==="
+          jq -r '
+            .Results[].Vulnerabilities[] |
+            { 
+              severity: .Severity, 
+              vuln_id: .VulnerabilityID, 
+              title: .Title, 
+              pkg: .PkgName,
+              order: (if .Severity == "CRITICAL" then 1 
+                      elif .Severity == "HIGH" then 2 
+                      elif .Severity == "MEDIUM" then 3 
+                      elif .Severity == "LOW" then 4 
+                      else 5 end) 
+            } | 
+            [.order, .severity, .vuln_id, .title, .pkg] | 
+            @tsv' trivy-results.json
 
       - name: 📝 Update SECURITY.md
         run: |
@@ -56,11 +76,26 @@ jobs:
                       else 5 end) 
             } | 
             [.order, .severity, .vuln_id, .title, .pkg] | 
-            @tsv' trivy-results.json | sort -k1,1n | cut -f2- | awk -F'\t' '{print "| " $1 " | " $2 " | " $3 " | " $4 " |"}' >> SECURITY.md
-          
+            @tsv' trivy-results.json | sort -k1,1n | cut -f2- | while IFS=$'\t' read -r severity vuln_id title pkg; do
+              echo "| $severity | $vuln_id | $title | $pkg |" >> SECURITY.md
+            done
+
           echo "" >> SECURITY.md
           echo "## Nota" >> SECURITY.md
           echo "Estas vulnerabilidades son generadas automáticamente mediante Trivy." >> SECURITY.md
-          
-          
-        
+
+      - name: 🔍 Check for Changes in SECURITY.md
+        run: |
+          git diff --exit-code SECURITY.md || echo "SECURITY.md ha cambiado."
+
+      - name: 📤 Commit Changes
+        run: |
+          if git diff --quiet SECURITY.md; then
+            echo "No hay cambios en SECURITY.md, omitiendo commit."
+          else
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add SECURITY.md
+            git commit -m "Actualizar SECURITY.md con resultados de Trivy"
+            git push
+          fi
