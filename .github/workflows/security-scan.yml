@@ -18,6 +18,12 @@ jobs:
       - name: 🛠️ Checkout Repo
         uses: actions/checkout@v4
 
+      - name: 📥 Install Trivy
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install wget -y
+          wget -qO- https://github.com/aquasecurity/trivy/releases/latest/download/trivy_$(uname -s)_$(uname -m).tar.gz | tar zxvf - -C /usr/local/bin/
+
       - name: 🔨 Build Docker Image (Python 3)
         run: |
           docker build -t python-app:latest .
