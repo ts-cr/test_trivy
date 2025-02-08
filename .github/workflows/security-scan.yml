@@ -41,15 +41,12 @@ jobs:
           echo "## Vulnerabilidades Detectadas" >> SECURITY.md
           echo "| Severidad  | Tipo          | Descripción                           | Recurso Afectado          |" >> SECURITY.md
           echo "|------------|---------------|---------------------------------------|---------------------------|" >> SECURITY.md
-          jq -r '.Results[].Vulnerabilities[] | "| \(.Severity) | \(.VulnerabilityID) | \(.Title) | \(.PkgName) |"' trivy-results.json >> SECURITY.md
+          jq -r '.Results[].Vulnerabilities[] | 
+            select(.Severity) |
+            {"CRITICAL": 1, "HIGH": 2, "MEDIUM": 3, "LOW": 4, "UNKNOWN": 5 }[.Severity] as $order |
+            [.Severity, .VulnerabilityID, .Title, .PkgName, $order] |
+            @csv' trivy-results.json | sort -t, -k5,5n | awk -F',' '{print "| " $1 " | " $2 " | " $3 " | " $4 " |"}' >> SECURITY.md
           echo "" >> SECURITY.md
           echo "## Nota" >> SECURITY.md
           echo "Estas vulnerabilidades son generadas automáticamente mediante Trivy." >> SECURITY.md
-
-      - name: 📤 Commit Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add SECURITY.md
-          git commit -m "Actualizar SECURITY.md con resultados de Trivy"
-          git push
+        
