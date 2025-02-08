@@ -7,12 +7,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  security-events: write  # Permiso para subir reportes SARIF al Security Dashboard
+  contents: write  # Permiso necesario para actualizar SECURITY.md
 
 jobs:
   security_scan:
-    name: 🔍 Security Scan with Trivy
+    name: 🔍 Security Scan and Update SECURITY.md
     runs-on: ubuntu-latest
 
     steps:
@@ -23,18 +22,29 @@ jobs:
         run: |
           docker build -t python-app:latest .
 
-      - name: 🛡 Run Trivy Scan (Generate SARIF Report)
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'python-app:latest'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
+      - name: 🛡 Run Trivy Scan (Generate JSON Report)
+        run: |
+          trivy image --format json -o trivy-results.json python-app:latest
 
-      - name: 📤 Upload Trivy Report to GitHub Security Dashboard
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_SECURITY_TOKEN }}
+      - name: 📝 Update SECURITY.md
+        run: |
+          echo "# Security Report" > SECURITY.md
+          echo "" >> SECURITY.md
+          echo "## Última Actualización" >> SECURITY.md
+          echo "\`$(date +"%d/%m/%Y")\`" >> SECURITY.md
+          echo "" >> SECURITY.md
+          echo "## Vulnerabilidades Detectadas" >> SECURITY.md
+          echo "| Severidad  | Tipo          | Descripción                           | Recurso Afectado          |" >> SECURITY.md
+          echo "|------------|---------------|---------------------------------------|---------------------------|" >> SECURITY.md
+          jq -r '.Results[].Vulnerabilities[] | "| \(.Severity) | \(.VulnerabilityID) | \(.Title) | \(.PkgName) |"' trivy-results.json >> SECURITY.md
+          echo "" >> SECURITY.md
+          echo "## Nota" >> SECURITY.md
+          echo "Estas vulnerabilidades son generadas automáticamente mediante Trivy." >> SECURITY.md
+
+      - name: 📤 Commit Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add SECURITY.md
+          git commit -m "Actualizar SECURITY.md con resultados de Trivy"
+          git push
