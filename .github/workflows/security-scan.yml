@@ -32,9 +32,9 @@ jobs:
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
 
-      - name: 📤 Upload Trivy Report to GitHub Security Dashboard
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_SECURITY_TOKEN }}
+      #- name: 📤 Upload Trivy Report to GitHub Security Dashboard
+      #  uses: github/codeql-action/upload-sarif@v3
+      #  with:
+      #    sarif_file: 'trivy-results.sarif'
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GH_SECURITY_TOKEN }}
