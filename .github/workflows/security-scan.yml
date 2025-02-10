@@ -128,7 +128,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=ts-cr \
+            -Dsonar.projectKey=test_trivy \
+            -Dsonar.organization=ts-cr \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN \
