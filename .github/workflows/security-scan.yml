@@ -47,7 +47,7 @@ jobs:
                 ),
                 type: "VULNERABILITY",
                 primaryLocation: {
-                  message: (.Description // "No description available"),
+                  message: (.Description // "No description provided for this vulnerability"),
                   filePath: (.PkgName // "unknown file"),
                   textRange: {
                     startLine: 1,
