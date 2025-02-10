@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Permiso necesario para actualizar SECURITY.md
+  contents: write  # Required permission to update SECURITY.md
 
 jobs:
   security_scan:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🛠️ Checkout Repo
+      - name: 🛠️ Checkout Repository
         uses: actions/checkout@v4
 
       - name: 📥 Install Trivy
@@ -82,12 +82,12 @@ jobs:
         run: |
           echo "# Security Report" > SECURITY.md
           echo "" >> SECURITY.md
-          echo "## Última Actualización" >> SECURITY.md
-          echo "\`$(date +"%d/%m/%Y")\`" >> SECURITY.md
+          echo "## Last Update" >> SECURITY.md
+          echo "\`$(date +"%Y-%m-%d")\`" >> SECURITY.md
           echo "" >> SECURITY.md
-          echo "## Vulnerabilidades Detectadas" >> SECURITY.md
-          echo "| Severidad  | ID Vulnerabilidad | Descripción                           | Recurso Afectado          |" >> SECURITY.md
-          echo "|------------|-------------------|---------------------------------------|---------------------------|" >> SECURITY.md
+          echo "## Detected Vulnerabilities" >> SECURITY.md
+          echo "| Severity  | Vulnerability ID | Description                        | Affected Resource          |" >> SECURITY.md
+          echo "|-----------|-----------------|------------------------------------|----------------------------|" >> SECURITY.md
           
           jq -r '
             .Results[].Vulnerabilities[] |
@@ -108,21 +108,21 @@ jobs:
             done
 
           echo "" >> SECURITY.md
-          echo "## Nota" >> SECURITY.md
-          echo "Estas vulnerabilidades son generadas automáticamente mediante Trivy." >> SECURITY.md
+          echo "## Note" >> SECURITY.md
+          echo "These vulnerabilities are automatically generated using Trivy." >> SECURITY.md
 
       - name: 🔍 Check for Changes in SECURITY.md
         run: |
-          git diff --exit-code SECURITY.md || echo "SECURITY.md ha cambiado."
+          git diff --exit-code SECURITY.md || echo "SECURITY.md has changed."
 
       - name: 📤 Commit Changes
         run: |
           if git diff --quiet --exit-code SECURITY.md; then
-            echo "No hay cambios en SECURITY.md, omitiendo commit."
+            echo "No changes detected in SECURITY.md, skipping commit."
           else
             git config --global user.name "github-actions[bot]"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
             git add SECURITY.md
-            git commit -m "Actualizar SECURITY.md con resultados de Trivy"
+            git commit -m "Update SECURITY.md with Trivy scan results"
             git push
           fi
