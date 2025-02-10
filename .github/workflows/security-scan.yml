@@ -128,9 +128,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=test_trivy \
+            -Dsonar.projectKey=ts-cr_test_trivy \
             -Dsonar.organization=ts-cr \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN \
             -Dsonar.externalIssuesReportPaths=trivy-sonarqube-report.xml
+            -Dsonar.branch.name=main
