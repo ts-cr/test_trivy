@@ -99,3 +99,32 @@ jobs:
             git commit -m "Actualizar SECURITY.md con resultados de Trivy"
             git push
           fi
+
+
+      - name: 📡 Convert Trivy Report to SonarQube Format
+        run: |
+          echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > trivy-sonarqube-report.xml
+          echo "<testsuites>" >> trivy-sonarqube-report.xml
+          jq -r '
+            .Results[].Vulnerabilities[] |
+            {
+              severity: .Severity, 
+              vuln_id: .VulnerabilityID, 
+              title: .Title, 
+              pkg: .PkgName,
+              description: .Description
+            } | 
+            "<testcase name=\"" + .vuln_id + "\" classname=\"" + .pkg + "\"><failure message=\"" + .severity + ": " + .title + "\"><![CDATA[" + .description + "]]></failure></testcase>"' trivy-results.json >> trivy-sonarqube-report.xml
+          echo "</testsuites>" >> trivy-sonarqube-report.xml
+      
+      - name: 🚀 Upload Report to SonarQube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=your_project_key \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN \
+            -Dsonar.externalIssuesReportPaths=trivy-sonarqube-report.xml
+      
