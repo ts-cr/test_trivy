@@ -1,7 +1,7 @@
 # Security Report
 
 ## Última Actualización
-`08/02/2025`
+`10/02/2025`
 
 ## Vulnerabilidades Detectadas
 | Severidad  | Tipo          | Descripción                           | Recurso Afectado          |
@@ -1178,8 +1178,11 @@
 | LOW | TEMP-0628843-DBAD28 | [more related to CVE-2005-4890] | passwd |
 | LOW | TEMP-0841856-B18BAF | [Privilege escalation possible to other user than root] | bash |
 | UNKNOWN | CVE-2024-12133 | libtasn1-6 |  |
+| UNKNOWN | CVE-2024-12243 | libgnutls30 |  |
 | UNKNOWN | CVE-2024-31047 | An issue in Academy Software Foundation openexr v.3.2.3 and before all ... | libopenexr-3-1-30 |
 | UNKNOWN | CVE-2024-31047 | An issue in Academy Software Foundation openexr v.3.2.3 and before all ... | libopenexr-dev |
+| UNKNOWN | CVE-2024-57949 | In the Linux kernel, the following vulnerability has been resolved:  i ... | linux-libc-dev |
+| UNKNOWN | CVE-2025-21684 | In the Linux kernel, the following vulnerability has been resolved:  g ... | linux-libc-dev |
 
 ## Nota
 Estas vulnerabilidades son generadas automáticamente mediante Trivy.
