@@ -30,7 +30,7 @@ jobs:
         run: |
           trivy image --format json -o trivy-results.json python-app:latest
 
-      - name: 📡 Convert Trivy Report to SonarQube JSON Format
+      - name: 📡 Convert Trivy Report to SonarQube Format
         run: |
           jq -r '
           {
@@ -47,7 +47,7 @@ jobs:
                 ),
                 type: "VULNERABILITY",
                 primaryLocation: {
-                  message: .Description,
+                  message: (.Description // "No description available"),
                   filePath: (.PkgName // "unknown file"),
                   textRange: {
                     startLine: 1,
@@ -57,6 +57,7 @@ jobs:
               }
             ]
           }' trivy-results.json > trivy-sonarqube-report.json
+        
 
 
       - name: 🛠 Install SonarQube Scanner
