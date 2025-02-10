@@ -47,7 +47,7 @@ jobs:
                 ),
                 type: "VULNERABILITY",
                 primaryLocation: {
-                  message: .Title,
+                  message: .Description,
                   filePath: (.PkgName // "unknown file"),
                   textRange: {
                     startLine: 1,
@@ -57,7 +57,7 @@ jobs:
               }
             ]
           }' trivy-results.json > trivy-sonarqube-report.json
-  
+
 
       - name: 🛠 Install SonarQube Scanner
         run: |
