@@ -57,8 +57,6 @@ jobs:
               }
             ]
           }' trivy-results.json > trivy-sonarqube-report.json
-        
-
 
       - name: 🛠 Install SonarQube Scanner
         run: |
@@ -88,25 +86,25 @@ jobs:
           echo "\`$(date +"%d/%m/%Y")\`" >> SECURITY.md
           echo "" >> SECURITY.md
           echo "## Vulnerabilidades Detectadas" >> SECURITY.md
-          echo "| Severidad  | Tipo          | Descripción                           | Recurso Afectado          |" >> SECURITY.md
-          echo "|------------|---------------|---------------------------------------|---------------------------|" >> SECURITY.md
+          echo "| Severidad  | ID Vulnerabilidad | Descripción                           | Recurso Afectado          |" >> SECURITY.md
+          echo "|------------|-------------------|---------------------------------------|---------------------------|" >> SECURITY.md
           
           jq -r '
             .Results[].Vulnerabilities[] |
             { 
               severity: .Severity, 
               vuln_id: .VulnerabilityID, 
-              title: .Title, 
-              pkg: .PkgName,
+              description: (.Description // "No description provided"), 
+              pkg: (.PkgName // "Unknown package"),
               order: (if .Severity == "CRITICAL" then 1 
                       elif .Severity == "HIGH" then 2 
                       elif .Severity == "MEDIUM" then 3 
                       elif .Severity == "LOW" then 4 
                       else 5 end) 
             } | 
-            [.order, .severity, .vuln_id, .title, .pkg] | 
-            @tsv' trivy-results.json | sort -k1,1n | cut -f2- | while IFS=$'\t' read -r severity vuln_id title pkg; do
-              echo "| $severity | $vuln_id | $title | $pkg |" >> SECURITY.md
+            [.order, .severity, .vuln_id, .description, .pkg] | 
+            @tsv' trivy-results.json | sort -k1,1n | cut -f2- | while IFS=$'\t' read -r severity vuln_id description pkg; do
+              echo "| $severity | $vuln_id | $description | $pkg |" >> SECURITY.md
             done
 
           echo "" >> SECURITY.md
@@ -119,7 +117,7 @@ jobs:
 
       - name: 📤 Commit Changes
         run: |
-          if git diff --quiet SECURITY.md; then
+          if git diff --quiet --exit-code SECURITY.md; then
             echo "No hay cambios en SECURITY.md, omitiendo commit."
           else
             git config --global user.name "github-actions[bot]"
