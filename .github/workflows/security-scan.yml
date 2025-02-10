@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   security_scan:
-    name: 🔍 Security Scan and Update SECURITY.md
+    name: 🔍 Security Scan and Upload to SonarQube
     runs-on: ubuntu-latest
 
     steps:
@@ -30,26 +30,53 @@ jobs:
         run: |
           trivy image --format json -o trivy-results.json python-app:latest
 
-      - name: 🛠 Debug Trivy Output
+      - name: 📡 Convert Trivy Report to SonarQube JSON Format
         run: |
-          echo "=== TRIVY RAW JSON ==="
-          cat trivy-results.json
-          echo "=== JQ PARSED OUTPUT ==="
           jq -r '
-            .Results[].Vulnerabilities[] |
-            { 
-              severity: .Severity, 
-              vuln_id: .VulnerabilityID, 
-              title: .Title, 
-              pkg: .PkgName,
-              order: (if .Severity == "CRITICAL" then 1 
-                      elif .Severity == "HIGH" then 2 
-                      elif .Severity == "MEDIUM" then 3 
-                      elif .Severity == "LOW" then 4 
-                      else 5 end) 
-            } | 
-            [.order, .severity, .vuln_id, .title, .pkg] | 
-            @tsv' trivy-results.json
+          {
+            issues: [
+              .Results[].Vulnerabilities[] | {
+                engineId: "Trivy",
+                ruleId: .VulnerabilityID,
+                severity: (
+                  if .Severity == "CRITICAL" then "BLOCKER"
+                  elif .Severity == "HIGH" then "CRITICAL"
+                  elif .Severity == "MEDIUM" then "MAJOR"
+                  elif .Severity == "LOW" then "MINOR"
+                  else "INFO" end
+                ),
+                type: "VULNERABILITY",
+                primaryLocation: {
+                  message: .Title,
+                  filePath: .PkgName,
+                  textRange: {
+                    startLine: 1,
+                    endLine: 1
+                  }
+                }
+              }
+            ]
+          }' trivy-results.json > trivy-sonarqube-report.json
+
+      - name: 🛠 Install SonarQube Scanner
+        run: |
+          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+          unzip sonar-scanner.zip
+          mv sonar-scanner-5.0.1.3006-linux sonar-scanner
+          echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
+
+      - name: 🚀 Upload Report to SonarQube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=ts-cr_test_trivy \
+            -Dsonar.organization=ts-cr \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN \
+            -Dsonar.externalIssuesReportPaths=trivy-sonarqube-report.json \
+            -Dsonar.branch.name=main
 
       - name: 📝 Update SECURITY.md
         run: |
@@ -99,39 +126,3 @@ jobs:
             git commit -m "Actualizar SECURITY.md con resultados de Trivy"
             git push
           fi
-
-      - name: 📡 Convert Trivy Report to SonarQube Format
-        run: |
-          echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > trivy-sonarqube-report.xml
-          echo "<testsuites>" >> trivy-sonarqube-report.xml
-          jq -r '
-            .Results[].Vulnerabilities[] |
-            {
-              severity: .Severity, 
-              vuln_id: .VulnerabilityID, 
-              title: .Title, 
-              pkg: .PkgName,
-              description: .Description
-            } | 
-            "<testcase name=\"" + .vuln_id + "\" classname=\"" + .pkg + "\"><failure message=\"" + .severity + ": " + .title + "\"><![CDATA[" + .description + "]]></failure></testcase>"' trivy-results.json >> trivy-sonarqube-report.xml
-          echo "</testsuites>" >> trivy-sonarqube-report.xml
-
-      - name: 🛠 Install SonarQube Scanner
-        run: |
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-          unzip sonar-scanner.zip
-          mv sonar-scanner-5.0.1.3006-linux sonar-scanner
-          echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
-
-      - name: 🚀 Upload Report to SonarQube
-        env:
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=ts-cr_test_trivy \
-            -Dsonar.organization=ts-cr \
-            -Dsonar.sources=. \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN \
-            -Dsonar.externalIssuesReportPaths=trivy-sonarqube-report.xml
-            -Dsonar.branch.name=main
