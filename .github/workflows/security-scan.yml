@@ -131,6 +131,12 @@ jobs:
       - name: Scan Docker image for vulnerabilities with Trivy (plain text)
         run: trivy image --format table --output trivy_report.txt my-docker-image
 
+      - name: Upload Trivy Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy_report.txt
+
       - name: Upload Flake8 Report
         uses: actions/upload-artifact@v4
         with:
