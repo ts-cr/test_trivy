@@ -42,7 +42,7 @@ jobs:
         
 
       - name: Run unit tests
-        run: pytest --rootdir=tests --disable-warnings
+        run: pytest tests --disable-warnings
 
       - name: Run performance tests
         run: pytest --benchmark-only
