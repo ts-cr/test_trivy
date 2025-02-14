@@ -45,7 +45,7 @@ jobs:
         run: bandit -r . || echo "Bandit found security issues, review the logs."
       
       - name: Check dependencies for vulnerabilities with Safety
-        run: safety scan --keyless -r requirements.txt
+        run: safety check -r requirements.txt
       
       - name: Check code quality with Flake8
         run: flake8 . || echo "Flake8 found formatting issues. Check the logs."
