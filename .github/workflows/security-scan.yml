@@ -36,49 +36,59 @@ jobs:
           chmod +x hadolint
           sudo mv hadolint /usr/local/bin/
 
-      # 📌 1️⃣ Bandit - Análisis de seguridad en Python
+      # 📌 Bandit - Análisis de seguridad en Python
       - name: Run Bandit (TXT)
-        run: bandit -r . -f txt -o bandit_report.txt || echo "Bandit found security issues."
+        run: |
+          bandit -r . -f txt -o bandit_report.txt || echo "Bandit found security issues."
 
       - name: Run Bandit (JSON)
-        run: bandit -r . -f json -o bandit_report.json || echo "Bandit found security issues."
+        run: |
+          bandit -r . -f json -o bandit_report.json || echo "Bandit found security issues."
 
-      # 📌 2️⃣ Safety - Análisis de dependencias
+      # 📌 Safety - Análisis de dependencias
       - name: Check dependencies for vulnerabilities with Safety
         run: safety check -r requirements.txt
 
-      # 📌 3️⃣ Flake8 - Linting en Python
+      # 📌 Flake8 - Linting en Python
       - name: Run Flake8 (TXT)
-        run: flake8 . --output-file=flake8_report.txt || echo "Flake8 found formatting issues."
+        run: |
+          flake8 . --output-file=flake8_report.txt || echo "Flake8 found formatting issues."
 
       - name: Convert Flake8 output to JSON
-        run: jq -R -s -c 'split("\n") | map(select(length > 0)) | {flake8_report: .}' flake8_report.txt > flake8_report.json
+        run: |
+          jq -R -s -c 'split("\n") | map(select(length > 0)) | {flake8_report: .}' flake8_report.txt > flake8_report.json
 
-      # 📌 4️⃣ Mypy - Type Checking en Python
+      # 📌 Mypy - Type Checking en Python
       - name: Run Mypy (TXT)
-        run: mypy . | tee mypy_report.txt || echo "Mypy found type inconsistencies."
+        run: |
+          mypy . | tee mypy_report.txt || echo "Mypy found type inconsistencies."
 
       - name: Convert Mypy output to JSON
-        run: jq -R -s -c 'split("\n") | map(select(length > 0)) | {mypy_report: .}' mypy_report.txt > mypy_report.json
+        run: |
+          jq -R -s -c 'split("\n") | map(select(length > 0)) | {mypy_report: .}' mypy_report.txt > mypy_report.json
 
-      # 📌 5️⃣ Trivy - Análisis de seguridad en Docker
+      # 📌 Trivy - Análisis de seguridad en Docker
       - name: Build Docker Image
         run: docker build -t my-docker-image .
 
       - name: Run Trivy scan (TXT)
-        run: trivy image --format table --output trivy_report.txt my-docker-image
+        run: |
+          trivy image --format table --output trivy_report.txt my-docker-image
 
       - name: Run Trivy scan (JSON)
-        run: trivy image --format json --output trivy_report.json my-docker-image
+        run: |
+          trivy image --format json --output trivy_report.json my-docker-image
 
-      # 📌 6️⃣ Hadolint - Linting de Dockerfile
+      # 📌 Hadolint - Linting de Dockerfile
       - name: Run Hadolint (TXT)
-        run: hadolint Dockerfile --format tty > hadolint_report.txt || echo "Hadolint found issues."
+        run: |
+          hadolint Dockerfile --format tty > hadolint_report.txt || echo "Hadolint found issues."
 
       - name: Run Hadolint (JSON)
-        run: hadolint Dockerfile --format json > hadolint_report.json || echo "Hadolint found issues."
+        run: |
+          hadolint Dockerfile --format json > hadolint_report.json || echo "Hadolint found issues."
 
-      # 📌 7️⃣ Subir archivos TXT como artefactos en GitHub Actions
+      # 📌 Subir archivos TXT como artefactos en GitHub Actions
       - name: Upload Bandit Report
         uses: actions/upload-artifact@v4
         with:
@@ -109,13 +119,14 @@ jobs:
           name: trivy-report
           path: trivy_report.txt
 
-      # 📌 8️⃣ Subir reportes JSON a GitHub Pages
+      # 📌 Subir reportes JSON a GitHub Pages
       - name: Setup GitHub Pages branch
         run: |
           mkdir -p public
-          mv *report.json public/
+          mv *.json public/
 
       - name: Deploy reports to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
