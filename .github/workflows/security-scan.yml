@@ -124,6 +124,7 @@ jobs:
         run: |
           mkdir -p public
           mv *.json public/
+          ls -lah public/
 
       - name: Create JSON Hero Viewer
         run: |
@@ -162,7 +163,10 @@ jobs:
               </script>
           </body>
           </html>' > public/index.html
-          
+
+      - name: Add .nojekyll to prevent GitHub Pages issues
+        run: touch public/.nojekyll
+        
       - name: Deploy reports to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
