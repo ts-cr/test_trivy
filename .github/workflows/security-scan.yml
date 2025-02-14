@@ -124,6 +124,7 @@ jobs:
         run: |
           mkdir -p public
           mv *.json public/
+          mv public/* .
           ls -lah public/
 
       - name: Create JSON Hero Viewer
