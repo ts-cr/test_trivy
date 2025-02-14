@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest pytest-assume pytest-benchmark locust bandit safety flake8 mypy
+          pip install pytest pytest-assume pytest-benchmark locust bandit safety flake8 mypy pytest-benchmark[histogram] pygal pygaljs
 
       - name: 📥 Install Trivy
         run: |
@@ -45,7 +45,7 @@ jobs:
         run: bandit -r . || echo "Bandit found security issues, review the logs."
       
       - name: Check dependencies for vulnerabilities with Safety
-        run: safety check -r requirements.txt
+        run: safety scan -r requirements.txt
       
       - name: Check code quality with Flake8
         run: flake8 . || echo "Flake8 found formatting issues. Check the logs."
