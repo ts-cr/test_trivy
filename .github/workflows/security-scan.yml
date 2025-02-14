@@ -120,11 +120,12 @@ jobs:
           path: trivy_report.txt
 
       # 📌 Subir reportes JSON a GitHub Pages
-      - name: Move JSON reports to public before deploying
+      - name: Move JSON reports to GitHub Pages folder
         run: |
           mkdir -p public
-          mv *.json public/  # Mueve los JSON a public/, pero NO los saca de ahí.
-      
+          mv *.json public/  # Mueve los JSON a la carpeta de publicación
+          mv public/index.html public/index.htm  # Renombra por compatibilidad
+
       - name: Create JSON Hero Viewer
         run: |
           echo '<!DOCTYPE html>
