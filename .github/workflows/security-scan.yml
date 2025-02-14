@@ -48,7 +48,7 @@ jobs:
         run: safety check -r requirements.txt
       
       - name: Check code quality with Flake8
-        run: flake8 . || echo "Flake8 found formatting issues. Check the logs."
+        run: flake8 . --output-file=flake8_report.txt || echo "Flake8 found formatting issues. Check the logs."
       
       - name: Check type consistency with Mypy
         run: mypy . | tee mypy_report.txt || echo "Mypy found type inconsistencies. Check the logs."
@@ -140,3 +140,4 @@ jobs:
             hadolint_report.txt
             mypy_report.txt
             bandit_report.txt
+            flake8_report.txt
