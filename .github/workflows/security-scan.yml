@@ -128,8 +128,8 @@ jobs:
       - name: Build Docker Image
         run: docker build -t my-docker-image .
 
-      - name: Scan Docker image for vulnerabilities with Trivy
-        run: trivy image my-docker-image
+      - name: Scan Docker image for vulnerabilities with Trivy (plain text)
+        run: trivy image --format table --output trivy_report.txt my-docker-image
 
       - name: Upload Trivy report as artifact
         uses: actions/upload-artifact@v4
