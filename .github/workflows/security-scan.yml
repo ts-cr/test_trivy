@@ -125,6 +125,44 @@ jobs:
           mkdir -p public
           mv *.json public/
 
+      - name: Create JSON Hero Viewer
+        run: |
+          echo '<!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>JSON Hero Viewer</title>
+              <style>
+                  body { font-family: Arial, sans-serif; text-align: center; }
+                  iframe { width: 90%; height: 80vh; border: none; }
+              </style>
+          </head>
+          <body>
+              <h1>📊 JSON Hero - Report Viewer</h1>
+              <p>Select a JSON report to view:</p>
+              <select id="json-selector" onchange="updateViewer()">
+                  <option value="">-- Select a Report --</option>
+                  <option value="bandit_report.json">Bandit Report</option>
+                  <option value="flake8_report.json">Flake8 Report</option>
+                  <option value="hadolint_report.json">Hadolint Report</option>
+                  <option value="mypy_report.json">Mypy Report</option>
+                  <option value="trivy_report.json">Trivy Report</option>
+              </select>
+              <br><br>
+              <iframe id="json-hero-frame"></iframe>
+              <script>
+                  function updateViewer() {
+                      let file = document.getElementById("json-selector").value;
+                      if (file) {
+                          let viewerUrl = `https://jsonhero.io/new?url=${window.location.origin}/${file}`;
+                          document.getElementById("json-hero-frame").src = viewerUrl;
+                      }
+                  }
+              </script>
+          </body>
+          </html>' > public/index.html
+          
       - name: Deploy reports to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
