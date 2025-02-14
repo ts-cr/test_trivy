@@ -88,13 +88,14 @@ jobs:
 
       - name: Move benchmark histograms to .benchmarks root
         run: |
-          HISTOGRAM=$(find .benchmarks -type f -name "*.svg" | head -n 1)
+          HISTOGRAM=$(find .benchmarks -mindepth 2 -type f -name "*.svg" | head -n 1)
           if [ -f "$HISTOGRAM" ]; then
             echo "Found histogram: $HISTOGRAM"
             mv "$HISTOGRAM" .benchmarks/
           else
             echo "Warning: No benchmark histograms found. Skipping histogram upload."
           fi
+  
 
       - name: Upload new benchmark results
         uses: actions/upload-artifact@v4
