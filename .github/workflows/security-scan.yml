@@ -58,7 +58,7 @@ jobs:
         run: pytest tests --disable-warnings || echo "Tests failed, but the workflow will continue."
       
       - name: Run performance tests
-        run: pytest --benchmark-only
+        run: ytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results
       
       # Start Flask application before running load tests
       - name: Start Flask app
