@@ -59,7 +59,7 @@ jobs:
 
       - name: Ensure benchmark directory exists
         run: mkdir -p .benchmarks
-      
+
       - name: Download previous benchmark results (if available)
         uses: actions/download-artifact@v4
         with:
@@ -81,6 +81,10 @@ jobs:
             echo "No benchmark results found."
             exit 1
           fi
+
+      - name: Move benchmark histograms to .benchmarks root
+        run: |
+          find .benchmarks -type f -name "*.svg" -exec mv {} .benchmarks/ \;
 
       - name: Upload new benchmark results
         uses: actions/upload-artifact@v4
