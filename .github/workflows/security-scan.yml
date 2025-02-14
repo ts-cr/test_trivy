@@ -59,14 +59,12 @@ jobs:
 
       - name: Ensure benchmark directory exists
         run: mkdir -p .benchmarks
-
+      
       - name: Download previous benchmark results (if available)
-        run: |
-          if gh run download-artifact --name benchmark-results --path .benchmarks; then
-            echo "Previous benchmark results downloaded."
-          else
-            echo "No previous benchmark results found. Continuing..."
-          fi
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-results
+          path: .benchmarks
 
       - name: Run performance tests
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results --benchmark-autosave
