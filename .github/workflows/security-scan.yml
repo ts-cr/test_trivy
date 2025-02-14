@@ -60,11 +60,15 @@ jobs:
       - name: Ensure benchmark directory exists
         run: mkdir -p .benchmarks
 
-      - name: Download previous benchmark results (if available)
-        uses: actions/download-artifact@v4
-        with:
-          name: benchmark-results
-          path: .benchmarks
+      - name: Check if previous benchmark results exist
+        run: |
+          ARTIFACT_COUNT=$(gh api repos/:owner/:repo/actions/artifacts | jq '.artifacts | map(select(.name == "benchmark-results")) | length')
+          if [ "$ARTIFACT_COUNT" -gt 0 ]; then
+            echo "Benchmark artifact found, downloading..."
+            gh run download --name benchmark-results --dir .benchmarks || echo "Download failed, continuing..."
+          else
+            echo "No previous benchmark results found, skipping download."
+          fi
 
       - name: Install matplotlib (if needed)
         run: pip install matplotlib
