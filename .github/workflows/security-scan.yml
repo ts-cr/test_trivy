@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest pytest-assume pytest-benchmark locust bandit safety flake8 mypy pytest-benchmark[histogram] pygal pygaljs matplotlib
+          pip install pytest pytest-assume pytest-benchmark locust bandit safety flake8 mypy pytest-benchmark[histogram] pygal pygaljs matplotlib jq
 
       - name: 📥 Install Trivy
         run: |
@@ -33,48 +33,43 @@ jobs:
       - name: Install Hadolint
         run: |
           wget -O hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
-          if [ ! -s hadolint ]; then
-            echo "Error: Failed to download Hadolint binary"
-            exit 1
-          fi
           chmod +x hadolint
           sudo mv hadolint /usr/local/bin/
-        
-      #  Security analysis before running tests
-      - name: Perform security check with Bandit
-        run: bandit -r . -f txt -o bandit_report.txt || echo "Bandit found security issues, review the logs."
+
+      # 📌 1️⃣ Análisis de seguridad con Bandit
+      - name: Perform security check with Bandit (TXT)
+        run: bandit -r . -f txt -o bandit_report.txt || echo "Bandit found security issues."
       
+      - name: Perform security check with Bandit (JSON)
+        run: bandit -r . -f json -o bandit_report.json || echo "Bandit found security issues."
+
+      # 📌 2️⃣ Análisis de dependencias con Safety
       - name: Check dependencies for vulnerabilities with Safety
         run: safety check -r requirements.txt
-      
-      - name: Check code quality with Flake8
-        run: flake8 . --output-file=flake8_report.txt || echo "Flake8 found formatting issues. Check the logs."
-      
-      - name: Check type consistency with Mypy
-        run: mypy . | tee mypy_report.txt || echo "Mypy found type inconsistencies. Check the logs."
-      
-      # Run unit and performance tests
+
+      # 📌 3️⃣ Linting con Flake8
+      - name: Check code quality with Flake8 (TXT)
+        run: flake8 . --output-file=flake8_report.txt || echo "Flake8 found formatting issues."
+
+      - name: Convert Flake8 output to JSON
+        run: jq -R -s -c 'split("\n") | map(select(length > 0)) | {flake8_report: .}' flake8_report.txt > flake8_report.json
+
+      # 📌 4️⃣ Type Checking con Mypy
+      - name: Check type consistency with Mypy (TXT)
+        run: mypy . | tee mypy_report.txt || echo "Mypy found type inconsistencies."
+
+      - name: Convert Mypy output to JSON
+        run: jq -R -s -c 'split("\n") | map(select(length > 0)) | {mypy_report: .}' mypy_report.txt > mypy_report.json
+
+      # 📌 5️⃣ Pruebas unitarias y de rendimiento
       - name: Run unit tests
         run: pytest tests --disable-warnings || echo "Tests failed, but the workflow will continue."
 
       - name: Ensure benchmark directory exists
         run: mkdir -p .benchmarks
 
-      - name: Check if previous benchmark results exist
-        run: |
-          ARTIFACT_COUNT=$(gh api repos/:owner/:repo/actions/artifacts | jq '.artifacts | map(select(.name == "benchmark-results")) | length')
-          if [ "$ARTIFACT_COUNT" -gt 0 ]; then
-            echo "Benchmark artifact found, downloading..."
-            gh run download --name benchmark-results --dir .benchmarks || echo "Download failed, continuing..."
-          else
-            echo "No previous benchmark results found, skipping download."
-          fi
-
       - name: Run performance tests
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results --benchmark-autosave
-
-      - name: List all generated benchmark files
-        run: find . -type f | tee all_files.log
 
       - name: Move benchmark results to .benchmarks root
         run: |
@@ -93,13 +88,58 @@ jobs:
             echo "Moving histogram: $HISTOGRAM"
             mv "$HISTOGRAM" .benchmarks/latest_benchmark.svg
           else
-            echo "Warning: No benchmark histograms found. Skipping histogram upload."
+            echo "Warning: No benchmark histograms found."
           fi
-    
-      - name: Debug List files in .benchmarks/
-        run: ls -lah .benchmarks/
 
-      - name: Upload new benchmark results
+      # 📌 6️⃣ Análisis de seguridad en Docker
+      - name: Build Docker Image
+        run: docker build -t my-docker-image .
+
+      - name: Scan Docker image with Trivy (TXT)
+        run: trivy image --format table --output trivy_report.txt my-docker-image
+
+      - name: Scan Docker image with Trivy (JSON)
+        run: trivy image --format json --output trivy_report.json my-docker-image
+
+      # 📌 7️⃣ Linting de Dockerfile con Hadolint
+      - name: Lint Dockerfile with Hadolint (TXT)
+        run: hadolint Dockerfile --format tty > hadolint_report.txt || echo "Hadolint found issues."
+
+      - name: Lint Dockerfile with Hadolint (JSON)
+        run: hadolint Dockerfile --format json > hadolint_report.json || echo "Hadolint found issues."
+
+      # 📌 Subir archivos TXT como artefactos en GitHub Actions
+      - name: Upload Bandit Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-report
+          path: bandit_report.txt
+
+      - name: Upload Flake8 Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: flake8-report
+          path: flake8_report.txt
+
+      - name: Upload Mypy Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mypy-report
+          path: mypy_report.txt
+
+      - name: Upload Hadolint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: hadolint-report
+          path: hadolint_report.txt
+
+      - name: Upload Trivy Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy_report.txt
+
+      - name: Upload Benchmark Results
         uses: actions/upload-artifact@v4
         with:
           name: benchmark-results
@@ -111,52 +151,13 @@ jobs:
           name: benchmark-histogram
           path: .benchmarks/latest_benchmark.svg
 
-      # Start Flask application before running load tests
-      - name: Start Flask app
+      # 📌 Subir reportes JSON a GitHub Pages
+      - name: Setup GitHub Pages branch
         run: |
-          python app.py &  # Run Flask in the background
-          sleep 5  # Wait to ensure the app is running
-      
-      # Run load tests with Locust
-      - name: Run load tests with Locust
-        run: locust -f load_tests/locustfile.py --headless -u 50 -r 5 --run-time 1m
-      
-      # Security and linting for Docker
-      - name: Lint Dockerfile with Hadolint
-        run: hadolint Dockerfile --format tty > hadolint_report.txt || echo "Hadolint found issues, check the logs."
+          mkdir -p public
+          mv *report.json public/
 
-      - name: Build Docker Image
-        run: docker build -t my-docker-image .
-
-      - name: Scan Docker image for vulnerabilities with Trivy (plain text)
-        run: trivy image --format table --output trivy_report.txt my-docker-image
-
-      - name: Upload Trivy Report
-        uses: actions/upload-artifact@v4
+      - name: Deploy reports to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: trivy-report
-          path: trivy_report.txt
-
-      - name: Upload Flake8 Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: flake8-report
-          path: flake8_report.txt
-
-      - name: Upload Bandit Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: bandit-report
-          path: bandit_report.txt
-
-      - name: Upload Hadolint Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: hadolint-report
-          path: hadolint_report.txt
-
-      - name: Upload Mypy Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: mypy-report
-          path: mypy_report.txt
+          publish_dir: ./public
