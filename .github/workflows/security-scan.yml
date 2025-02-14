@@ -85,15 +85,15 @@ jobs:
             exit 1
           fi
 
-          - name: Move benchmark histograms to .benchmarks root
-          run: |
-            HISTOGRAMS=$(find .benchmarks -type f -name "*.svg")
-            if [ -n "$HISTOGRAMS" ]; then
-              mv $HISTOGRAMS .benchmarks/
-            else
-              echo "No benchmark histograms found."
-              exit 1
-            fi  
+      - name: Move benchmark histograms to .benchmarks root
+        run: |
+          HISTOGRAMS=$(find .benchmarks -type f -name "*.svg")
+          if [ -n "$HISTOGRAMS" ]; then
+            mv $HISTOGRAMS .benchmarks/
+          else
+            echo "No benchmark histograms found."
+            exit 1
+          fi  
 
       - name: Upload new benchmark results
         uses: actions/upload-artifact@v4
