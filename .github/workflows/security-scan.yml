@@ -120,12 +120,12 @@ jobs:
           path: trivy_report.txt
 
       # 📌 Subir reportes JSON a GitHub Pages
-      - name: Setup GitHub Pages branch
+      - name: Move JSON reports to root before deploying
         run: |
           mkdir -p public
           mv *.json public/
-          mv public/* .
-          ls -lah public/
+          mv public/* .  # Mueve los archivos JSON a la raíz
+    
 
       - name: Create JSON Hero Viewer
         run: |
