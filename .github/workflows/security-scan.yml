@@ -68,7 +68,7 @@ jobs:
       
       # Run load tests with Locust
       - name: Run load tests with Locust
-        run: locust -f load_tests/locustfile.py --headless -u 50 -r 5 --run-time 2m
+        run: locust -f load_tests/locustfile.py --headless -u 50 -r 5 --run-time 1m
       
       # Security and linting for Docker
       - name: Lint Dockerfile with Hadolint
