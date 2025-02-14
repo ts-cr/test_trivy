@@ -118,6 +118,9 @@ jobs:
         with:
           name: trivy-report
           path: trivy_report.txt
+    
+      - name: Ensure public directory exists
+        run: mkdir -p public
 
       - name: Create JSON Hero Viewer
         run: |
