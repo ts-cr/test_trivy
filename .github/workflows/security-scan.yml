@@ -1,4 +1,4 @@
-name: Security Scan with Trivy
+name: Security Scan with Trivy & Hadolint
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest pytest-benchmark locust bandit safety flake8 mypy hadolint
+          pip install pytest pytest-benchmark locust bandit safety flake8 mypy
 
       - name: Install Trivy
         run: |
@@ -32,6 +32,12 @@ jobs:
           sudo apt-get install -y wget
           wget -qO- https://github.com/aquasecurity/trivy/releases/latest/download/trivy_$(uname -s)_$(uname -m).tar.gz | tar xz
           sudo mv trivy /usr/local/bin/
+
+      - name: Install Hadolint
+        run: |
+          wget -O hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+          chmod +x hadolint
+          sudo mv hadolint /usr/local/bin/
 
       - name: Run unit tests
         run: pytest --disable-warnings
