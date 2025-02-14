@@ -130,3 +130,9 @@ jobs:
 
       - name: Scan Docker image for vulnerabilities with Trivy
         run: trivy image my-docker-image
+
+      - name: Upload Trivy report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy_report.txt
