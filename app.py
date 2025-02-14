@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "¡Hola desde Cloud Run con Python 3!", 200
+    return "Hello from Cloud Run with Python 3!", 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
