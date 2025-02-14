@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest pytest-assume pytest-benchmark locust bandit safety flake8 mypy pytest-benchmark[histogram] pygal pygaljs
+          pip install pytest pytest-assume pytest-benchmark locust bandit safety flake8 mypy pytest-benchmark[histogram] pygal pygaljs matplotlib
 
       - name: 📥 Install Trivy
         run: |
@@ -69,9 +69,6 @@ jobs:
           else
             echo "No previous benchmark results found, skipping download."
           fi
-
-      - name: Install matplotlib (if needed)
-        run: pip install matplotlib
 
       - name: Run performance tests
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results --benchmark-autosave
