@@ -74,7 +74,7 @@ jobs:
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results --benchmark-autosave
 
       - name: List all generated benchmark files
-        run: find .benchmarks -type f
+        run: find .benchmarks -type f | tee benchmark_files.log
 
       - name: Move benchmark results to .benchmarks root
         run: |
@@ -88,14 +88,14 @@ jobs:
 
       - name: Move benchmark histograms to .benchmarks root
         run: |
-          HISTOGRAM=$(find .benchmarks -mindepth 2 -type f -name "*.svg" | head -n 1)
+          HISTOGRAM=$(find .benchmarks -type f | grep -i '\.svg$' | head -n 1)
           if [ -f "$HISTOGRAM" ]; then
             echo "Found histogram: $HISTOGRAM"
             mv "$HISTOGRAM" .benchmarks/
           else
             echo "Warning: No benchmark histograms found. Skipping histogram upload."
           fi
-  
+    
 
       - name: Upload new benchmark results
         uses: actions/upload-artifact@v4
