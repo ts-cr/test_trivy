@@ -57,11 +57,14 @@ jobs:
       - name: Run unit tests
         run: pytest tests --disable-warnings || echo "Tests failed, but the workflow will continue."
 
-      - name: Download previous benchmark results
-        uses: actions/download-artifact@v4
-        with:
-          name: benchmark-results
-          path: .benchmarks
+      - name: Download previous benchmark results (if available)
+        run: |
+          if gh run download-artifact --name benchmark-results --path .benchmarks; then
+            echo "Previous benchmark results downloaded."
+          else
+            echo "No previous benchmark results found. Continuing..."
+          fi
+      
 
       - name: Run performance tests
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results
