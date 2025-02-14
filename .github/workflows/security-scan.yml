@@ -120,13 +120,11 @@ jobs:
           path: trivy_report.txt
 
       # 📌 Subir reportes JSON a GitHub Pages
-      - name: Move JSON reports to root before deploying
+      - name: Move JSON reports to public before deploying
         run: |
           mkdir -p public
-          mv *.json public/
-          mv public/* .  # Mueve los archivos JSON a la raíz
-    
-
+          mv *.json public/  # Mueve los JSON a public/, pero NO los saca de ahí.
+      
       - name: Create JSON Hero Viewer
         run: |
           echo '<!DOCTYPE html>
@@ -164,13 +162,14 @@ jobs:
               </script>
           </body>
           </html>' > public/index.html
-
+      
       - name: Add .nojekyll to prevent GitHub Pages issues
         run: touch public/.nojekyll
-        
+      
       - name: Deploy reports to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           force_orphan: true
+      
