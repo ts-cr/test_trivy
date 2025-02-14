@@ -24,7 +24,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest pytest-benchmark locust bandit safety flake8 mypy trivy hadolint
+          pip install pytest pytest-benchmark locust bandit safety flake8 mypy hadolint
+
+      - name: Install Trivy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget -qO- https://github.com/aquasecurity/trivy/releases/latest/download/trivy_$(uname -s)_$(uname -m).tar.gz | tar xz
+          sudo mv trivy /usr/local/bin/
 
       - name: Run unit tests
         run: pytest --disable-warnings
