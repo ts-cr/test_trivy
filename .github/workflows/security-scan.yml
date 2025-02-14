@@ -42,7 +42,7 @@ jobs:
         
       #  Security analysis before running tests
       - name: Perform security check with Bandit
-        run: bandit -r . || echo "Bandit found security issues, review the logs."
+        run: bandit -r . -f txt -o bandit_report.txt || echo "Bandit found security issues, review the logs."
       
       - name: Check dependencies for vulnerabilities with Safety
         run: safety check -r requirements.txt
@@ -51,7 +51,7 @@ jobs:
         run: flake8 . || echo "Flake8 found formatting issues. Check the logs."
       
       - name: Check type consistency with Mypy
-        run: mypy . || echo "Mypy found type inconsistencies. Check the logs."
+        run: mypy . | tee mypy_report.txt || echo "Mypy found type inconsistencies. Check the logs."
       
       # Run unit and performance tests
       - name: Run unit tests
@@ -123,7 +123,7 @@ jobs:
       
       # Security and linting for Docker
       - name: Lint Dockerfile with Hadolint
-        run: hadolint Dockerfile || echo "Hadolint found issues, check the logs."
+        run: hadolint Dockerfile --format txt > hadolint_report.txt || echo "Hadolint found issues, check the logs."
 
       - name: Build Docker Image
         run: docker build -t my-docker-image .
@@ -131,8 +131,12 @@ jobs:
       - name: Scan Docker image for vulnerabilities with Trivy (plain text)
         run: trivy image --format table --output trivy_report.txt my-docker-image
 
-      - name: Upload Trivy report as artifact
+      - name: Upload Security & Linting Reports
         uses: actions/upload-artifact@v4
         with:
-          name: trivy-report
-          path: trivy_report.txt
+          name: security-linting-reports
+          path: |
+            trivy_report.txt
+            hadolint_report.txt
+            mypy_report.txt
+            bandit_report.txt
