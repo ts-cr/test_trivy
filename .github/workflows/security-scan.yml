@@ -56,10 +56,28 @@ jobs:
       # Run unit and performance tests
       - name: Run unit tests
         run: pytest tests --disable-warnings || echo "Tests failed, but the workflow will continue."
-      
+
+      - name: Download previous benchmark results
+        uses: actions/download-artifact@v3
+        with:
+          name: benchmark-results
+          path: .benchmarks
+
       - name: Run performance tests
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results
-      
+
+      - name: Upload new benchmark results
+        uses: actions/upload-artifact@v3
+        with:
+          name: benchmark-results
+          path: .benchmarks/latest.json
+
+      - name: Upload Benchmark Histogram
+        uses: actions/upload-artifact@v3
+        with:
+          name: benchmark-histogram
+          path: .benchmarks/*.svg
+
       # Start Flask application before running load tests
       - name: Start Flask app
         run: |
