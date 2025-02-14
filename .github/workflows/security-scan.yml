@@ -86,12 +86,12 @@ jobs:
             exit 1
           fi
 
-      - name: Move benchmark histograms to .benchmarks root
+      - name: Move and rename benchmark histograms
         run: |
           HISTOGRAM=$(find . -type f | grep -i '\.svg$' | head -n 1)
           if [ -f "$HISTOGRAM" ]; then
             echo "Moving histogram: $HISTOGRAM"
-            mv "$HISTOGRAM" .benchmarks/
+            mv "$HISTOGRAM" .benchmarks/latest_benchmark.svg
           else
             echo "Warning: No benchmark histograms found. Skipping histogram upload."
           fi
