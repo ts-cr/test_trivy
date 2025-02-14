@@ -30,14 +30,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
-          wget -qO- https://github.com/aquasecurity/trivy/releases/latest/download/trivy_$(uname -s)_$(uname -m).tar.gz | tar xz
+          wget -O trivy.tar.gz https://github.com/aquasecurity/trivy/releases/latest/download/trivy_$(uname -s)_$(uname -m).tar.gz
+          tar -xzf trivy.tar.gz || (echo "Failed to extract Trivy" && cat trivy.tar.gz && exit 1)
           sudo mv trivy /usr/local/bin/
-
+          rm trivy.tar.gz
+        
       - name: Install Hadolint
         run: |
           wget -O hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+          if [ ! -s hadolint ]; then
+            echo "Error: Failed to download Hadolint binary"
+            exit 1
+          fi
           chmod +x hadolint
           sudo mv hadolint /usr/local/bin/
+        
 
       - name: Run unit tests
         run: pytest --disable-warnings
