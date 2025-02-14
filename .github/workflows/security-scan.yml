@@ -40,30 +40,39 @@ jobs:
           chmod +x hadolint
           sudo mv hadolint /usr/local/bin/
         
-
-      - name: Run unit tests
-        run: pytest tests --disable-warnings
-
-      - name: Run performance tests
-        run: pytest --benchmark-only
-
-      - name: Run load tests with Locust
-        run: locust -f load_tests/locustfile.py --headless -u 50 -r 5 --run-time 2m
-
+      #  Security analysis before running tests
       - name: Perform security check with Bandit
         run: bandit -r .
-
+      
       - name: Check dependencies for vulnerabilities with Safety
         run: safety check -r requirements.txt
-
+      
       - name: Check code quality with Flake8
         run: flake8 .
-
+      
       - name: Check type consistency with Mypy
         run: mypy .
-
+      
+      # Run unit and performance tests
+      - name: Run unit tests
+        run: pytest tests --disable-warnings
+      
+      - name: Run performance tests
+        run: pytest --benchmark-only
+      
+      # Start Flask application before running load tests
+      - name: Start Flask app
+        run: |
+          python app.py &  # Run Flask in the background
+          sleep 5  # Wait to ensure the app is running
+      
+      # Run load tests with Locust
+      - name: Run load tests with Locust
+        run: locust -f load_tests/locustfile.py --headless -u 50 -r 5 --run-time 2m
+      
+      # Security and linting for Docker
       - name: Lint Dockerfile with Hadolint
         run: hadolint Dockerfile
-
+  
       - name: Scan Docker image for vulnerabilities with Trivy
         run: trivy image my-docker-image
