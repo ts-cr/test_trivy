@@ -57,6 +57,13 @@ jobs:
       - name: Run unit tests
         run: pytest tests --disable-warnings || echo "Tests failed, but the workflow will continue."
 
+      # Run unit and performance tests
+      - name: Run unit tests
+        run: pytest tests --disable-warnings || echo "Tests failed, but the workflow will continue."
+
+      - name: Ensure benchmark directory exists
+        run: mkdir -p .benchmarks
+
       - name: Download previous benchmark results (if available)
         run: |
           if gh run download-artifact --name benchmark-results --path .benchmarks; then
@@ -64,10 +71,15 @@ jobs:
           else
             echo "No previous benchmark results found. Continuing..."
           fi
-      
 
       - name: Run performance tests
-        run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results
+        run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results --benchmark-autosave
+
+      - name: List benchmark directory contents
+        run: ls -lah .benchmarks || echo ".benchmarks directory not found"
+
+      - name: Rename benchmark results
+        run: mv .benchmarks/benchmark_results.json .benchmarks/latest.json || echo "benchmark_results.json not found"
 
       - name: Upload new benchmark results
         uses: actions/upload-artifact@v4
