@@ -88,9 +88,10 @@ jobs:
 
       - name: Move benchmark histograms to .benchmarks root
         run: |
-          HISTOGRAMS=$(find .benchmarks -type f -name "*.svg")
-          if [ -n "$HISTOGRAMS" ]; then
-            mv $HISTOGRAMS .benchmarks/
+          HISTOGRAM=$(find .benchmarks -type f -name "*.svg" | head -n 1)
+          if [ -f "$HISTOGRAM" ]; then
+            echo "Found histogram: $HISTOGRAM"
+            mv "$HISTOGRAM" .benchmarks/
           else
             echo "Warning: No benchmark histograms found. Skipping histogram upload."
           fi
