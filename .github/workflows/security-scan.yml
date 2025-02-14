@@ -48,7 +48,7 @@ jobs:
         run: pytest --benchmark-only
 
       - name: Run load tests with Locust
-        run: locust -f locustfile.py --headless -u 50 -r 5 --run-time 2m
+        run: locust -f load_tests/locustfile.py --headless -u 50 -r 5 --run-time 2m
 
       - name: Perform security check with Bandit
         run: bandit -r .
