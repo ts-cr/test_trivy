@@ -123,7 +123,7 @@ jobs:
       
       # Security and linting for Docker
       - name: Lint Dockerfile with Hadolint
-        run: hadolint Dockerfile --format txt > hadolint_report.txt || echo "Hadolint found issues, check the logs."
+        run: hadolint Dockerfile --format tty > hadolint_report.txt || echo "Hadolint found issues, check the logs."
 
       - name: Build Docker Image
         run: docker build -t my-docker-image .
