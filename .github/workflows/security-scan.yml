@@ -10,119 +10,45 @@ permissions:
   contents: write  # Required permission to update SECURITY.md
 
 jobs:
-  security_scan:
-    name: 🔍 Security Scan and Upload to SonarQube
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 🛠️ Checkout Repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: 📥 Install Trivy
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
         run: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+          pip install -r requirements.txt
+          pip install pytest pytest-benchmark locust bandit safety flake8 mypy trivy hadolint
 
-      - name: 🔨 Build Docker Image (Python 3)
-        run: |
-          docker build -t python-app:latest .
+      - name: Run unit tests
+        run: pytest --disable-warnings
 
-      - name: 🛡 Run Trivy Scan (Generate JSON Report)
-        run: |
-          trivy image --format json -o trivy-results.json python-app:latest
+      - name: Run performance tests
+        run: pytest --benchmark-only
 
-      - name: 📡 Convert Trivy Report to SonarQube Format
-        run: |
-          jq -r '
-          {
-            issues: [
-              .Results[].Vulnerabilities[] | {
-                engineId: "Trivy",
-                ruleId: .VulnerabilityID,
-                severity: (
-                  if .Severity == "CRITICAL" then "BLOCKER"
-                  elif .Severity == "HIGH" then "CRITICAL"
-                  elif .Severity == "MEDIUM" then "MAJOR"
-                  elif .Severity == "LOW" then "MINOR"
-                  else "INFO" end
-                ),
-                type: "VULNERABILITY",
-                primaryLocation: {
-                  message: (.Description // "No description provided for this vulnerability"),
-                  filePath: (.PkgName // "unknown file"),
-                  textRange: {
-                    startLine: 1,
-                    endLine: 1
-                  }
-                }
-              }
-            ]
-          }' trivy-results.json > trivy-sonarqube-report.json
+      - name: Run load tests with Locust
+        run: locust -f locustfile.py --headless -u 50 -r 5 --run-time 2m
 
-      - name: 🛠 Install SonarQube Scanner
-        run: |
-          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-          unzip sonar-scanner.zip
-          mv sonar-scanner-5.0.1.3006-linux sonar-scanner
-          echo "$(pwd)/sonar-scanner/bin" >> $GITHUB_PATH
+      - name: Perform security check with Bandit
+        run: bandit -r .
 
-      - name: 🚀 Upload Report to SonarQube
-        env:
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=ts-cr_test_trivy \
-            -Dsonar.organization=ts-cr \
-            -Dsonar.sources=. \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN \
-            -Dsonar.externalIssuesReportPaths=trivy-sonarqube-report.json \
-            -Dsonar.branch.name=main
+      - name: Check dependencies for vulnerabilities with Safety
+        run: safety check -r requirements.txt
 
-      - name: 📝 Update SECURITY.md
-        run: |
-          echo "# Security Report" > SECURITY.md
-          echo "" >> SECURITY.md
-          echo "## Last Update" >> SECURITY.md
-          echo "\`$(date +"%Y-%m-%d")\`" >> SECURITY.md
-          echo "" >> SECURITY.md
-          echo "## Detected Vulnerabilities" >> SECURITY.md
-          echo "| Severity  | Vulnerability ID | Description                        | Affected Resource          |" >> SECURITY.md
-          echo "|-----------|-----------------|------------------------------------|----------------------------|" >> SECURITY.md
-          
-          jq -r '
-            .Results[].Vulnerabilities[] |
-            { 
-              severity: .Severity, 
-              vuln_id: .VulnerabilityID, 
-              description: (.Description // "No description provided"), 
-              pkg: (.PkgName // "Unknown package"),
-              order: (if .Severity == "CRITICAL" then 1 
-                      elif .Severity == "HIGH" then 2 
-                      elif .Severity == "MEDIUM" then 3 
-                      elif .Severity == "LOW" then 4 
-                      else 5 end) 
-            } | 
-            [.order, .severity, .vuln_id, .description, .pkg] | 
-            @tsv' trivy-results.json | sort -k1,1n | cut -f2- | while IFS=$'\t' read -r severity vuln_id description pkg; do
-              echo "| $severity | $vuln_id | $description | $pkg |" >> SECURITY.md
-            done
+      - name: Check code quality with Flake8
+        run: flake8 .
 
-          echo "" >> SECURITY.md
-          echo "## Note" >> SECURITY.md
-          echo "These vulnerabilities are automatically generated using Trivy." >> SECURITY.md
+      - name: Check type consistency with Mypy
+        run: mypy .
 
-      - name: 🔍 Check for Changes in SECURITY.md
-        run: |
-          git diff --exit-code SECURITY.md || echo "SECURITY.md has changed."
+      - name: Lint Dockerfile with Hadolint
+        run: hadolint Dockerfile
 
-      - name: 📤 Commit Changes
-        run: |
-          if git diff --quiet --exit-code SECURITY.md; then
-            echo "No changes detected in SECURITY.md, skipping commit."
-          else
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add SECURITY.md
-            git commit -m "Update SECURITY.md with Trivy scan results"
-            git push
-          fi
+      - name: Scan Docker image for vulnerabilities with Trivy
+        run: trivy image my-docker-image
