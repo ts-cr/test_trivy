@@ -12,4 +12,4 @@ def test_home(client):
     """Prueba que la ruta raíz '/' responde correctamente."""
     response = client.get("/")
     assert response.status_code == 200
-    assert response.data == b"¡Hola desde Cloud Run con Python 3!"
+    assert response.data.decode("utf-8") == "¡Hola desde Cloud Run con Python 3!"
