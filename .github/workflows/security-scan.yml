@@ -90,7 +90,7 @@ jobs:
         run: |
           HISTOGRAM=$(find . -type f | grep -i '\.svg$' | head -n 1)
           if [ -f "$HISTOGRAM" ]; then
-            echo "Found histogram: $HISTOGRAM"
+            echo "Moving histogram: $HISTOGRAM"
             mv "$HISTOGRAM" .benchmarks/
           else
             echo "Warning: No benchmark histograms found. Skipping histogram upload."
