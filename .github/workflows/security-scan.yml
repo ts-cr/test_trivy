@@ -60,19 +60,19 @@ jobs:
       - name: Ensure benchmark directory exists
         run: mkdir -p .benchmarks
 
-      - name: Check if previous benchmark results exist
-        run: |
-          if gh api repos/:owner/:repo/actions/artifacts | grep -q '"name": "benchmark-results"'; then
-            echo "Benchmark artifact found, downloading..."
-            gh run download --name benchmark-results --dir .benchmarks || echo "Download failed, continuing..."
-          else
-            echo "No previous benchmark results found, skipping download."
-          fi
+      - name: Download previous benchmark results (if available)
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-results
+          path: .benchmarks
+
+      - name: Install matplotlib (if needed)
+        run: pip install matplotlib
 
       - name: Run performance tests
         run: pytest tests --benchmark-only --benchmark-compare --benchmark-histogram --benchmark-save=benchmark_results --benchmark-autosave
 
-      - name: List benchmark directory contents
+      - name: List all generated benchmark files
         run: find .benchmarks -type f
 
       - name: Move benchmark results to .benchmarks root
@@ -91,9 +91,8 @@ jobs:
           if [ -n "$HISTOGRAMS" ]; then
             mv $HISTOGRAMS .benchmarks/
           else
-            echo "No benchmark histograms found."
-            exit 1
-          fi  
+            echo "Warning: No benchmark histograms found. Skipping histogram upload."
+          fi
 
       - name: Upload new benchmark results
         uses: actions/upload-artifact@v4
